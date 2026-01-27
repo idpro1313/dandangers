@@ -14,57 +14,28 @@ dateCreated: 2025-11-25T16:14:36.100Z
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ежедневные ивенты</title>
+  <link rel="stylesheet" href="modern-styles.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       padding: 20px;
+      margin: 0;
     }
     h2 {
       text-align: center;
-      color: #333;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background-color: #e0e0e0;
-      font-weight: bold;
-    }
-    .day-header {
-      background-color: #ddd;
-      font-size: 1.2em;
-      font-weight: bold;
-      text-align: center;
-    }
-    .time-col {
-      white-space: nowrap;
-      width: 10%;
-    }
-    .event-col {
-      width: 30%;
-    }
-    .note {
-      font-style: italic;
-      color: #555;
-      margin-top: 10px;
-      padding: 10px;
-      background: #f0f8ff;
-      border-left: 4px solid #4a90e2;
+      color: #1f2937;
+      font-size: 2.5rem;
+      margin-bottom: 2em;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   </style>
 </head>
 <body>
-
+<div class="content-wrapper">
 <h2>Ежедневные ивенты по дням недели</h2>
 
 <!-- Понедельник -->
@@ -412,5 +383,6 @@ dateCreated: 2025-11-25T16:14:36.100Z
     </td>
   </tr>
 </table>
+</div>
 </body>
 </html>

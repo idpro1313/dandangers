@@ -1,0 +1,305 @@
+/* Современные стили для Wiki.js */
+
+/* Глобальные стили */
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #f093fb;
+  --success-color: #4ade80;
+  --warning-color: #fbbf24;
+  --danger-color: #f87171;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Типографика */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+/* Ссылки */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
+/* Списки */
+ol, ul {
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+
+li {
+  margin: 0.5em 0;
+  line-height: 1.8;
+}
+
+/* Параграфы */
+p {
+  margin: 1em 0;
+  line-height: 1.8;
+}
+
+/* Выделения */
+mark {
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+mark.pen-green,
+mark.marker-green {
+  background: linear-gradient(120deg, #4ade80 0%, #22c55e 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+mark.pen-red {
+  background: linear-gradient(120deg, #f87171 0%, #ef4444 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Блоки цитат */
+blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  box-shadow: var(--shadow-sm);
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0.5em 0;
+}
+
+/* Горизонтальные линии */
+hr {
+  border: none;
+  height: 2px;
+  background: var(--bg-gradient);
+  margin: 2em 0;
+  border-radius: 2px;
+}
+
+/* Изображения */
+figure {
+  margin: 2em 0;
+  text-align: center;
+}
+
+figure.image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+figure.image img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Таблицы */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+th {
+  background: var(--bg-gradient);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 1em;
+  text-align: left;
+}
+
+td {
+  padding: 1em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background: rgba(102, 126, 234, 0.05);
+  transition: var(--transition);
+}
+
+/* Специальные классы для таблиц */
+.day-header {
+  background: var(--bg-gradient) !important;
+  color: #ffffff !important;
+  font-size: 1.3em;
+  font-weight: 700;
+  text-align: center;
+  padding: 1em !important;
+}
+
+.event-col {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.time-col {
+  font-weight: 600;
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+.note {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
+  border-left: 4px solid #3b82f6 !important;
+  color: #1e40af !important;
+  font-style: normal !important;
+  padding: 1em !important;
+}
+
+/* Контейнеры */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+/* Карточки для списков */
+ol li, ul li {
+  padding: 0.75em;
+  margin: 0.5em 0;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-color);
+  transition: var(--transition);
+}
+
+ol li:hover, ul li:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateX(4px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .content-wrapper {
+    padding: 1em;
+    margin: 1em;
+  }
+  
+  table {
+    font-size: 0.9em;
+  }
+  
+  th, td {
+    padding: 0.75em 0.5em;
+  }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-wrapper {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Улучшенные стили для strong */
+strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Стили для кода (если используется) */
+code {
+  background: rgba(102, 126, 234, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--primary-color);
+}
