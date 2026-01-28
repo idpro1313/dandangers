@@ -1,3 +1,4 @@
 git-sync:
-  state: success
-  last-run: 1769600527
+  state: failure
+  last-run: 1769600704
+  error: 'fatal: empty ident name (for <git-sync@trilby.media>) not allowed'

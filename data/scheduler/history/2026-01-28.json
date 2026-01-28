@@ -244,5 +244,23 @@
         "executed_at": "2026-01-28T14:42:07+03:00",
         "success": true,
         "output": ""
+    },
+    {
+        "id": "git-sync",
+        "executed_at": "2026-01-28T14:43:08+03:00",
+        "success": false,
+        "output": "fatal: could not read Password for 'https:\/\/{password}@github.com': No such device or address"
+    },
+    {
+        "id": "git-sync",
+        "executed_at": "2026-01-28T14:44:04+03:00",
+        "success": false,
+        "output": "fatal: empty ident name (for <git-sync@trilby.media>) not allowed"
+    },
+    {
+        "id": "git-sync",
+        "executed_at": "2026-01-28T14:45:04+03:00",
+        "success": false,
+        "output": "fatal: empty ident name (for <git-sync@trilby.media>) not allowed"
     }
 ]
