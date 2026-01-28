@@ -1,4 +1,4 @@
 git-sync:
   state: failure
-  last-run: 1769600704
-  error: 'fatal: empty ident name (for <git-sync@trilby.media>) not allowed'
+  last-run: 1769600767
+  error: 'fatal: could not read Password for ''https://{password}@github.com'': No such device or address'
