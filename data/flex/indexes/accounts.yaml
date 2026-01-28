@@ -1,9 +1,0 @@
-version: '1.2'
-timestamp: 1769600322
-count: 1
-index:
-  idpro:
-    storage_key: idpro
-    storage_timestamp: 1769600322
-    key: idpro
-    email: idpro13@gmail.com
