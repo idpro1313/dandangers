@@ -6,7 +6,7 @@ folders:
   - config
   - data
 sync:
-  direction: both
+  direction: pull
   on_save: true
   on_delete: true
   on_media: true
@@ -17,7 +17,7 @@ local_repository: null
 repository: 'https://github.com/idpro1313/dandangers.git'
 no_user: '1'
 user: null
-password: gitsync-def50200de945a4ce718a680ff6c5afcc648bcbda44660b6eb2bc3f167dddf14edce3b8ae05cc652b2a62ca53f1280225b256c77fd649c4844aff3a8e50bbcde7984be25c3abe1bb9ab51ca15e0e05d8e6b34b3efbb3d7d00ae04436cb0cf75aab62409d100101108cf6a65ddaefc73ba9bb8a419273ea95b6ba335c9aa1a45dc74ec3271a4b2d7fecfe5b5f5509f4a340dde14ff5d2e21642fbf048f194609df43684cc8f96aacb8d39a49acc70a3c6d3
+password: gitsync-def5020017d47f01625da71b151e1d246949be9d227831e8a04b35b82bffb1185c7a7251d3d89d6ef874a92efbb2db797e35635a0bd727d3c402934045265c1dace54db2f85093f4034d8d8ce771c39cf411d83f307dbdc1ecd52508edddbf969867fdef9ded934dd8219e52212e381ba5d555295e80c687667dbc8eb5a83eca7af9038366b53243e8f6cf5742f4aba542d89c01eca83739c2181c9c72eb6456e0148b29eedffabf79716a39c7735679e2
 webhook: /_git-sync-100769a0340c
 webhook_enabled: '0'
 webhook_secret: e67917caf227ecd59fe60a962b52a472fa2fe622f9102622

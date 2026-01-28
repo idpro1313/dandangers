@@ -1,4 +1,4 @@
 git-sync:
   state: failure
-  last-run: 1769600767
-  error: 'fatal: could not read Password for ''https://{password}@github.com'': No such device or address'
+  last-run: 1769600870
+  error: "To https://github.com/idpro1313/dandangers.git\r\n ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at 66f24ef87d6525ac33e88bca44a2e676c40cee68 but expected b04264938507f840e39a5b37e3b15f4d6c784f04)\r\nerror: failed to push some refs to 'https://github.com/idpro1313/dandangers.git'"
