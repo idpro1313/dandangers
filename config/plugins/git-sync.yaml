@@ -1,0 +1,36 @@
+enabled: true
+folders:
+  - pages
+  - themes
+  - plugins
+  - config
+  - data
+sync:
+  direction: both
+  on_save: true
+  on_delete: true
+  on_media: true
+  cron_enable: true
+  cron_at: '* * * * *'
+SyncNotice: null
+local_repository: null
+repository: 'https://github.com/idpro1313/dandangers.git'
+no_user: '1'
+user: idpro
+password: gitsync-def50200649ad1f6f4c71c11953ee367a98adfdb13ca61a1dda89ab9f60c9daa696eb3a10641259675246bbc645235efaeb6866c6dcd87539b19b4de2ac9b8422625233437df4e3e6c1ed432127e6a96631b00d2e3a89d08f85b9154b6e03492
+webhook: /_git-sync-100769a0340c
+webhook_enabled: '0'
+webhook_secret: e67917caf227ecd59fe60a962b52a472fa2fe622f9102622
+branch: main
+remote:
+  name: origin
+  branch: main
+git:
+  author: gravuser
+  message: '(Grav GitSync) Automatic Commit'
+  name: GitSync
+  email: git-sync@trilby.media
+  bin: git
+  ignore: null
+  private_key: null
+logging: true
