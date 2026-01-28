@@ -1,430 +1,433 @@
 <!--
 title: Таблица по дням недели
-description: 
+description: Ежедневные ивенты по дням недели
 published: true
 date: 2026-01-27T14:06:40.954Z
-tags: 
+tags: расписание, таблица, события
 editor: code
 dateCreated: 2025-11-25T16:14:36.100Z
 -->
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ежедневные ивенты</title>
-  <link rel="stylesheet" href="modern-styles.css">
-  <style>
-    /* Локальные стили для страницы таблиц */
-    .content-wrapper {
-      max-width: 1100px;
-    }
-    
-    .content-wrapper h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    /* Обертка для горизонтальной прокрутки на мобильных */
-    .table-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin: 1rem 0 2rem 0;
-    }
-    
-    .table-scroll table {
-      min-width: 600px;
-      margin: 0;
-    }
-    
-    @media (max-width: 768px) {
-      .content-wrapper {
-        padding: 1rem;
-      }
-      
-      .table-scroll {
-        margin: 0.75rem -1rem 1.5rem -1rem;
-        padding: 0 1rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .table-scroll table {
-        min-width: 520px;
-        font-size: 0.75rem;
-      }
-      
-      .table-scroll th,
-      .table-scroll td {
-        padding: 0.5rem 0.375rem;
-      }
-    }
-  </style>
-</head>
-<body>
-<div class="content-wrapper">
-<h2>Ежедневные ивенты по дням недели</h2>
+<link rel="stylesheet" href="modern-styles.css">
+<div class="content-wrapper wide">
 
-<!-- Понедельник -->
+<h1>Ежедневные ивенты</h1>
+
+<p>Расписание событий по дням недели с указанием времени (МСК).</p>
+
+<hr>
+
+<h2>Понедельник</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Понедельник</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td colspan="4" class="note">Дополнительно: Обучение и улучшение войск, сбор ресурсов, трата выносливости (убиваем альф), разведмиссии</td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты, руководства</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение строительства</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки снаряжения</td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки снаряжения</td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки снаряжения</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td colspan="4" class="note">Дополнительно: обучение войск, сбор ресурсов, трата выносливости (альфы), разведмиссии</td>
+</tr>
+</tbody>
 </table>
 </div>
 
-<!-- Вторник -->
+<hr>
+
+<h2>Вторник</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Вторник</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td></td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td colspan="4" class="note">Дополнительно: Отправки грузовиков только А-класса, выполнение только S-заданий в отправках.<br>
-      ВАЖНО: в VS каждому нужно набрать не менее 5 млн очков! Лучше — 10 млн!</td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td></td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td colspan="4" class="note"><strong>ВАЖНО:</strong> Грузовики только А-класса, S-задания. В VS набрать не менее 5 млн (лучше 10 млн)!</td>
+</tr>
+</tbody>
 </table>
 </div>
 
-<!-- Среда -->
+<hr>
+
+<h2>Среда</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Среда</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td colspan="4" class="note">Дополнительно: Собираем разведмиссии на радаре.<br>
-      ВАЖНО: в VS каждому нужно набрать не менее 5 млн очков! Лучше — 10 млн!</td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td colspan="4" class="note">Собираем разведмиссии на радаре. <strong>ВАЖНО:</strong> в VS набрать не менее 5 млн (лучше 10 млн)!</td>
+</tr>
+</tbody>
 </table>
 </div>
 
-<!-- Четверг -->
+<hr>
+
+<h2>Четверг</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Четверг</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td colspan="4" class="note">
-      Сегодня идеальное время для улучшения героя (15:00–19:00 МСК).<br>
-      Не собирайте завершённые постройки, исследования и обучение войск вечером — прожмите их завтра (в пятницу)!<br>
-      ВАЖНО: в VS каждому нужно набрать не менее 5 млн очков! Лучше — 10 млн!
-    </td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td colspan="4" class="note">Идеальное время для улучшения героя (15:00–19:00 МСК). Не собирайте завершённые постройки вечером — прожмите их в пятницу! <strong>ВАЖНО:</strong> в VS набрать не менее 5 млн (лучше 10 млн)!</td>
+</tr>
+</tbody>
 </table>
 </div>
 
-<!-- Пятница -->
+<hr>
+
+<h2>Пятница</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Пятница</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td></td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td colspan="4" class="note">Дополнительно: Обучение и улучшение войск, разведмиссии.<br>
-      ВАЖНО: утром в субботу — выгрузка рейтинга за неделю. Наберите не менее 5 млн очков в VS!</td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td></td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td></td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td></td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td colspan="4" class="note">Обучение войск, разведмиссии. <strong>ВАЖНО:</strong> утром в субботу — выгрузка рейтинга. Наберите не менее 5 млн в VS!</td>
+</tr>
+</tbody>
 </table>
 </div>
 
-<!-- Суббота -->
+<hr>
+
+<h2>Суббота</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Суббота</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Обучение и улучшение войск</td>
-    <td class="event-col">АРКАДИЯ<br>— отправки грузовиков только А-класса<br>— выполнение только S-заданий в отправках</td>
-    <td></td>
-    <td></td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td></td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Обучение войск</strong></td>
+<td class="event-col"><strong>АРКАДИЯ</strong><br>Грузовики А-класса, S-задания</td>
+<td></td>
+<td class="time-col">—</td>
+</tr>
+</tbody>
 </table>
 </div>
 
-<!-- Воскресенье -->
+<hr>
+
+<h2>Воскресенье</h2>
+
 <div class="table-scroll">
 <table>
-  <tr><td colspan="4" class="day-header">Воскресенье</td></tr>
-  <tr>
-    <th>Турбо черепашка</th>
-    <th>Дуэль альянсов</th>
-    <th>Игра по крупному</th>
-    <th class="time-col">Время (МСК)</th>
-  </tr>
-  <tr>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td></td>
-    <td class="event-col">Улучшение героя:<br>– Использование призыва<br>– Использование фрагментов героев<br>– Использование руководства навыков</td>
-    <td>00:00 – 03:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td></td>
-    <td class="event-col">Строительство поселения:<br>– Ускорение строительства</td>
-    <td>04:00 – 07:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td></td>
-    <td class="event-col">Шеф Коллекция:<br>– Чертежи<br>– Гайки</td>
-    <td>08:00 – 11:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td></td>
-    <td class="event-col">Исследование технологий:<br>– Использование ускорителей исследований<br>– Увеличение силы с помощью исследования</td>
-    <td>12:00 – 15:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td></td>
-    <td class="event-col">Усиление снаряжения:<br>– Обломки снаряжения</td>
-    <td>16:00 – 19:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td></td>
-    <td class="event-col">Развитие титана:<br>– Использование клеток титана<br>– Использование сывороток титана</td>
-    <td>20:00 – 23:00</td>
-  </tr>
-  <tr>
-    <td class="event-col">Сбор ресурсов</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td colspan="4" class="note">
-      VS сегодня нет — отдыхайте, подводите итоги, накапливайте ресурсы на следующую неделю.<br>
-      Заканчивается Турбочерепашка — используйте накопленное ближе к обновлению сервера.
-    </td>
-  </tr>
+<thead>
+<tr>
+<th>Турбо черепашка</th>
+<th>Дуэль альянсов</th>
+<th>Игра по крупному</th>
+<th class="time-col">Время</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td></td>
+<td class="event-col"><strong>Улучшение героя</strong><br>Призыв, фрагменты</td>
+<td class="time-col">00:00–03:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td></td>
+<td class="event-col"><strong>Строительство</strong><br>Ускорение</td>
+<td class="time-col">04:00–07:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td></td>
+<td class="event-col"><strong>Шеф Коллекция</strong><br>Чертежи, гайки</td>
+<td class="time-col">08:00–11:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td></td>
+<td class="event-col"><strong>Исследование</strong><br>Ускорители, сила</td>
+<td class="time-col">12:00–15:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td></td>
+<td class="event-col"><strong>Снаряжение</strong><br>Обломки</td>
+<td class="time-col">16:00–19:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td></td>
+<td class="event-col"><strong>Титан</strong><br>Клетки, сыворотки</td>
+<td class="time-col">20:00–23:00</td>
+</tr>
+<tr>
+<td class="event-col"><strong>Сбор ресурсов</strong></td>
+<td></td>
+<td></td>
+<td class="time-col">—</td>
+</tr>
+<tr>
+<td colspan="4" class="note">VS сегодня нет — отдыхайте, подводите итоги, копите ресурсы. Заканчивается Турбочерепашка — используйте накопленное ближе к обновлению.</td>
+</tr>
+</tbody>
 </table>
 </div>
+
 </div>
-</body>
-</html>
