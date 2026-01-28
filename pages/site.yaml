@@ -1,0 +1,50 @@
+# Конфигурация сайта Grav
+# Скопируйте в user/config/site.yaml
+
+title: 'Tiles Survive Wiki'
+default_lang: ru
+
+author:
+  name: '[Dan]Dangers'
+  email: ''
+
+taxonomies:
+  - category
+  - tag
+
+metadata:
+  description: 'Wiki-справочник Союза [Dan]Dangers для игры Tiles Survive, штат 174'
+
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+
+blog:
+  route: '/blog'
+
+# Навигация
+menu:
+  - text: Главная
+    url: /home
+  - text: О союзе
+    url: /main
+  - text: Расписание
+    url: /daily
+  - text: Гайды
+    submenu:
+      - text: 17 советов
+        url: /17sovetov
+      - text: Для новичков
+        url: /bigguide
+      - text: Полный гайд
+        url: /fullguide
+      - text: Герои
+        url: /heroes
+      - text: Лаборатория
+        url: /lab
+      - text: Ресурсы
+        url: /res
+  - text: Таблица ивентов
+    url: /tabl
