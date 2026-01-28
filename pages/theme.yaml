@@ -1,0 +1,28 @@
+# Конфигурация темы Grav для Tiles Survive Wiki
+# Скопируйте этот файл в user/config/themes/[ваша-тема].yaml
+
+enabled: true
+dropdown:
+  enabled: true
+
+# Подключение кастомных стилей
+# Скопируйте modern-styles.css в:
+# user/themes/[ваша-тема]/css/custom.css
+# или используйте плагин Custom CSS
+
+# Настройки навигации
+navbar:
+  sticky: true
+  logo: true
+  
+# Футер
+footer:
+  enabled: true
+  copyright: '© 2026 Союз [Dan]Dangers | Tiles Survive Wiki'
+
+# Мета-теги
+metadata:
+  description: 'Wiki-справочник Союза [Dan]Dangers для игры Tiles Survive'
+  keywords: 'tiles survive, wiki, гайды, герои, прокачка'
+  author: '[Dan]Dangers'
+  robots: 'index, follow'
