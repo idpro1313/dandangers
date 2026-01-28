@@ -968,6 +968,9 @@ p:has(> br:only-child) {
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--font-lg);
   font-weight: 700;
   background: var(--gradient-primary);
@@ -979,6 +982,15 @@ p:has(> br:only-child) {
 
 .nav-logo:hover {
   text-shadow: none;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
 .nav-toggle {
@@ -1177,6 +1189,67 @@ p:has(> br:only-child) {
 
 main {
   min-height: calc(100vh - 60px - 100px);
+}
+
+/* ============================================
+   Hero Banner (главная страница)
+   ============================================ */
+
+.hero-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  box-shadow: 0 0 30px var(--primary-glow), 0 0 60px rgba(0, 212, 170, 0.15);
+  flex-shrink: 0;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  margin: 0 0 var(--space-2) 0;
+  padding: 0;
+  border: none;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: var(--font-lg);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+  
+  .hero-logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-base);
+  }
 }
 
 /* ============================================
