@@ -1253,6 +1253,122 @@ main {
 }
 
 /* ============================================
+   Промо-баннер LootBar
+   ============================================ */
+
+.promo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  max-width: var(--content-max);
+  margin: var(--space-4) auto;
+  margin-left: var(--space-3);
+  margin-right: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe6a0 100%);
+  border: 2px solid #ffc107;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition);
+  box-shadow: 0 2px 12px rgba(255, 193, 7, 0.2);
+}
+
+.promo-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.35);
+  text-shadow: none;
+}
+
+.promo-banner::after {
+  display: none !important;
+}
+
+.promo-banner-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.promo-banner-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ff9800 0%, #e65100 100%);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.promo-banner-text {
+  min-width: 0;
+}
+
+.promo-banner-title {
+  font-weight: 700;
+  font-size: var(--font-sm);
+  color: #e65100;
+  margin-bottom: 2px;
+}
+
+.promo-banner-desc {
+  font-size: var(--font-xs);
+  color: #795548;
+}
+
+.promo-banner-badge {
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-3);
+  background: linear-gradient(135deg, #ff9800 0%, #e65100 100%);
+  color: white;
+  font-size: var(--font-xs);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .promo-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+  
+  .promo-banner-content {
+    flex-direction: column;
+  }
+  
+  .promo-banner-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .promo-banner {
+    margin-left: var(--space-6);
+    margin-right: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .promo-banner {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Широкий баннер для страниц с wide content */
+.promo-banner.wide {
+  max-width: var(--content-wide);
+}
+
+/* ============================================
    Печать
    ============================================ */
 
