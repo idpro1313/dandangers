@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /.git/
+
+# Sitemap
+Sitemap: https://dandangers.ru/sitemap.xml
+
+# Яндекс
+Host: https://dandangers.ru
+
+# Crawl-delay для бережной индексации
+Crawl-delay: 1
