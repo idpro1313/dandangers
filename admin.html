@@ -274,92 +274,53 @@
       font-size: 16px;
     }
     
-    .ql-toolbar {
-      border: none !important;
-      border-bottom: 1px solid #e0e0e0 !important;
+    /* Панель форматирования */
+    .format-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 16px;
       background: #f5f5f5;
+      border-bottom: 1px solid #e0e0e0;
+      flex-wrap: wrap;
     }
     
-    .ql-container {
-      border: none !important;
-      font-family: inherit;
-    }
-    
-    /* Редактор с поддержкой стилей сайта */
-    .ql-editor {
-      padding: 24px;
-      color: #1a1a1a !important;
-      background: #f8f9fa !important;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-    }
-    
-    /* Базовые элементы */
-    .ql-editor h1 { font-size: 2em; margin-bottom: 0.5em; color: #1a1a1a; font-weight: 700; }
-    .ql-editor h2 { font-size: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; font-weight: 600; border-bottom: 2px solid #ff9800; padding-bottom: 0.3em; }
-    .ql-editor h3 { font-size: 1.25em; margin-bottom: 0.5em; color: #1a1a1a; font-weight: 600; }
-    .ql-editor p { margin-bottom: 1em; color: #1a1a1a; }
-    .ql-editor ul, .ql-editor ol { margin-bottom: 1em; padding-left: 2em; color: #1a1a1a; }
-    .ql-editor li { color: #1a1a1a; margin-bottom: 0.5em; }
-    .ql-editor a { color: #ff9800; text-decoration: none; }
-    .ql-editor a:hover { text-decoration: underline; }
-    .ql-editor strong { color: #1a1a1a; font-weight: 600; }
-    .ql-editor hr { border: none; border-top: 1px solid #ddd; margin: 1.5em 0; }
-    
-    .ql-editor blockquote { 
-      border-left: 4px solid #ff9800; 
-      padding: 12px 16px;
-      margin: 1em 0;
-      background: rgba(255, 152, 0, 0.1);
-      color: #333;
-      border-radius: 0 8px 8px 0;
-    }
-    
-    .ql-editor pre {
-      background: #1e1e1e;
-      color: #d4d4d4;
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      font-family: 'Fira Code', monospace;
-    }
-    
-    .ql-editor table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1em 0;
-    }
-    
-    .ql-editor th, .ql-editor td {
+    .format-toolbar button {
+      width: 32px;
+      height: 32px;
       border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
     }
     
-    .ql-editor th {
-      background: #ff9800;
-      color: white;
-      font-weight: 600;
+    .format-toolbar button:hover {
+      background: #e8e8e8;
+      border-color: #ccc;
     }
     
-    .ql-editor tr:nth-child(even) {
-      background: #f5f5f5;
+    .format-toolbar button:active {
+      background: #ddd;
     }
     
-    /* Placeholder text */
-    .ql-editor.ql-blank::before {
-      color: #999;
+    .toolbar-divider {
+      width: 1px;
+      height: 24px;
+      background: #ddd;
+      margin: 0 8px;
     }
     
-    /* Breadcrumb в редакторе */
-    .ql-editor .breadcrumb {
-      color: #666;
-      font-size: 0.9em;
-      margin-bottom: 1.5em;
-    }
-    
-    .ql-editor .breadcrumb a {
-      color: #ff9800;
+    /* iframe редактор */
+    .editor-frame {
+      width: 100%;
+      min-height: 500px;
+      border: none;
+      background: white;
     }
     
     /* Status Bar */
@@ -584,7 +545,27 @@
         </div>
         
         <div class="editor-container">
-          <div id="editor"></div>
+          <!-- Панель форматирования -->
+          <div class="format-toolbar" id="formatToolbar">
+            <button type="button" onclick="formatDoc('bold')" title="Жирный (Ctrl+B)"><b>B</b></button>
+            <button type="button" onclick="formatDoc('italic')" title="Курсив (Ctrl+I)"><i>I</i></button>
+            <button type="button" onclick="formatDoc('underline')" title="Подчёркнутый (Ctrl+U)"><u>U</u></button>
+            <span class="toolbar-divider"></span>
+            <button type="button" onclick="formatBlock('h1')" title="Заголовок 1">H1</button>
+            <button type="button" onclick="formatBlock('h2')" title="Заголовок 2">H2</button>
+            <button type="button" onclick="formatBlock('h3')" title="Заголовок 3">H3</button>
+            <button type="button" onclick="formatBlock('p')" title="Параграф">P</button>
+            <span class="toolbar-divider"></span>
+            <button type="button" onclick="formatDoc('insertUnorderedList')" title="Маркированный список">•</button>
+            <button type="button" onclick="formatDoc('insertOrderedList')" title="Нумерованный список">1.</button>
+            <button type="button" onclick="formatBlock('blockquote')" title="Цитата">❝</button>
+            <span class="toolbar-divider"></span>
+            <button type="button" onclick="insertLink()" title="Ссылка">🔗</button>
+            <button type="button" onclick="formatDoc('removeFormat')" title="Очистить форматирование">✖</button>
+          </div>
+          
+          <!-- iframe с CSS сайта -->
+          <iframe id="editorFrame" class="editor-frame"></iframe>
         </div>
         
         <textarea id="htmlEditor" style="display: none; width: 100%; min-height: 500px; padding: 20px; background: #1e1e1e; color: #d4d4d4; border: none; border-radius: 12px; font-family: 'Fira Code', monospace; font-size: 14px; resize: vertical;"></textarea>
@@ -620,35 +601,100 @@
 <script>
 const API_URL = 'admin-api.php';
 
-let quill = null;
+let editorFrame = null;
+let editorDoc = null;
 let currentFile = null;
 let originalContent = '';
 let isHtmlMode = false;
 let hasUnsavedChanges = false;
 
-// Initialize Quill
-function initQuill() {
-  quill = new Quill('#editor', {
-    theme: 'snow',
-    modules: {
-      toolbar: [
-        [{ 'header': [1, 2, 3, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ 'color': [] }, { 'background': [] }],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        ['blockquote', 'code-block'],
-        ['link', 'image'],
-        [{ 'align': [] }],
-        ['clean']
-      ]
-    },
-    placeholder: 'Начните редактирование...'
-  });
+// Инициализация iframe редактора
+function initEditor() {
+  editorFrame = document.getElementById('editorFrame');
   
-  quill.on('text-change', () => {
+  // Создаём документ в iframe с CSS сайта
+  const frameDoc = editorFrame.contentDocument || editorFrame.contentWindow.document;
+  
+  frameDoc.open();
+  frameDoc.write(`
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="modern-styles.css">
+      <style>
+        * { box-sizing: border-box; }
+        html, body {
+          margin: 0;
+          padding: 0;
+          min-height: 100%;
+        }
+        body {
+          padding: 24px;
+          background: var(--bg-dark, #0d1117);
+          color: var(--text-primary, #f0f6fc);
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          line-height: 1.6;
+          outline: none;
+        }
+        body:empty::before {
+          content: 'Начните редактирование...';
+          color: #666;
+        }
+        /* Убираем лишние элементы сайта */
+        .site-nav, .site-footer, .promo-banner { display: none !important; }
+      </style>
+    </head>
+    <body contenteditable="true"></body>
+    </html>
+  `);
+  frameDoc.close();
+  
+  editorDoc = frameDoc;
+  
+  // Отслеживаем изменения
+  editorDoc.body.addEventListener('input', () => {
     hasUnsavedChanges = true;
     updateStatus('Есть несохранённые изменения', true);
   });
+  
+  // Горячие клавиши в iframe
+  editorDoc.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      if (e.key === 's') {
+        e.preventDefault();
+        saveContent();
+      }
+    }
+  });
+}
+
+// Функции форматирования
+function formatDoc(command, value = null) {
+  editorFrame.contentWindow.focus();
+  editorDoc.execCommand(command, false, value);
+}
+
+function formatBlock(tag) {
+  editorFrame.contentWindow.focus();
+  editorDoc.execCommand('formatBlock', false, tag);
+}
+
+function insertLink() {
+  const url = prompt('Введите URL:', 'https://');
+  if (url) {
+    formatDoc('createLink', url);
+  }
+}
+
+// Получить HTML из редактора
+function getEditorContent() {
+  return editorDoc.body.innerHTML;
+}
+
+// Установить HTML в редактор
+function setEditorContent(html) {
+  editorDoc.body.innerHTML = html;
 }
 
 // API Functions
@@ -709,7 +755,7 @@ async function logout() {
 function showAdminPanel() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('adminPanel').style.display = 'block';
-  initQuill();
+  initEditor();
   loadFiles();
 }
 
@@ -755,8 +801,8 @@ async function loadFile(filename) {
     document.getElementById('editorWrapper').style.display = 'block';
     document.getElementById('currentFileName').textContent = filename;
     
-    // Set content in Quill
-    quill.root.innerHTML = result.content;
+    // Set content in editor
+    setEditorContent(result.content);
     document.getElementById('htmlEditor').value = result.content;
     
     // Update file list active state
@@ -782,7 +828,7 @@ async function saveContent() {
   
   const content = isHtmlMode 
     ? document.getElementById('htmlEditor').value 
-    : quill.root.innerHTML;
+    : getEditorContent();
   
   const result = await apiCall('save_content', {
     file: currentFile,
@@ -814,13 +860,13 @@ function toggleHtmlMode() {
   
   if (isHtmlMode) {
     // Switch to HTML mode
-    htmlEditor.value = quill.root.innerHTML;
+    htmlEditor.value = getEditorContent();
     editorContainer.style.display = 'none';
     htmlEditor.style.display = 'block';
     showToast('Режим HTML включён', 'info');
   } else {
     // Switch back to WYSIWYG
-    quill.root.innerHTML = htmlEditor.value;
+    setEditorContent(htmlEditor.value);
     editorContainer.style.display = 'block';
     htmlEditor.style.display = 'none';
     showToast('Визуальный режим включён', 'info');

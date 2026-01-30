@@ -1551,3 +1551,46 @@ h3 .icon {
     justify-content: center;
   }
 }
+
+/* ============================================
+   Сворачиваемые секции (details/summary)
+   ============================================ */
+
+details.old-guides-section {
+  margin-bottom: 2rem;
+}
+
+details.old-guides-section summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  list-style: none;
+}
+
+details.old-guides-section summary::-webkit-details-marker {
+  display: none;
+}
+
+details.old-guides-section summary::before {
+  content: "▶";
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+details.old-guides-section[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details.old-guides-section summary:hover {
+  background: var(--bg-elevated);
+  border-color: var(--primary);
+  color: var(--text-primary);
+}
