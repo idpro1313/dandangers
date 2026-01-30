@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105280577','ym');ym(105280577,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/105280577" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ресурсы и фарм в Tiles Survive — типы ресурсов, плитки на карте, дневной ускоритель, оптимизация сбора, система магазинов.">
+  <meta name="keywords" content="tiles survive ресурсы, tiles survive фарм, tiles survive плитки, tiles survive сбор ресурсов">
+  <meta name="author" content="Союз [Dan]Dangers">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dandangers.ru/guide-resursy.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dandangers.ru/guide-resursy.html">
+  <meta property="og:title" content="Ресурсы и фарм — Tiles Survive">
+  <meta property="og:description" content="Типы ресурсов, плитки на карте, дневной ускоритель, оптимизация сбора, система магазинов.">
+  <meta property="og:image" content="https://dandangers.ru/dangers.jpg">
+  <title>Ресурсы и фарм — Tiles Survive Wiki</title>
+  <link rel="icon" type="image/jpeg" href="dangers.jpg">
+  <link rel="stylesheet" href="modern-styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><img src="dangers.jpg" alt="DanDangers" class="nav-logo-img">TS Wiki</a>
+    <button class="nav-toggle" aria-label="Меню">☰</button>
+    <ul class="nav-menu">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="main.html">О союзе</a></li>
+      <li><a href="daily.html">Расписание</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="dropdown-toggle">Гайды ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="17sovetov.html">17 советов</a></li>
+          <li><a href="bigguide.html">Для новичков</a></li>
+          <li><a href="fullguide.html">Полный гайд</a></li>
+          <li><a href="heroes.html">Герои</a></li>
+          <li><a href="lab.html">Лаборатория</a></li>
+          <li><a href="res.html">Ресурсы</a></li>
+        </ul>
+      </li>
+      <li><a href="tabl.html">Таблица</a></li>
+      <li><a href="novoe.html">Новое</a></li>
+      <li><a href="lootbar.html">Скидки</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<a href="lootbar.html" class="promo-banner">
+  <div class="promo-banner-content">
+    <div class="promo-banner-icon">💰</div>
+    <div class="promo-banner-text">
+      <div class="promo-banner-title">Скидки до 32% на игровую валюту!</div>
+      <div class="promo-banner-desc">Купоны 6% и 10% для новых пользователей LootBar</div>
+    </div>
+  </div>
+  <div class="promo-banner-badge">Подробнее</div>
+</a>
+
+<div class="content-wrapper">
+
+<p class="breadcrumb"><a href="novoe.html">← Библиотека гайдов</a></p>
+
+<h1>Ресурсы и фарм</h1>
+
+<h2>Типы ресурсов</h2>
+
+<h3>Основные ресурсы (4)</h3>
+
+<ol>
+  <li><strong>Еда</strong> — для производства и развития</li>
+  <li><strong>Дерево</strong> — для строительства</li>
+  <li><strong>Металл</strong> — для строительства</li>
+  <li><strong>Топливо</strong> — для строительства и операций</li>
+</ol>
+
+<p>Все четыре нужны в равных количествах.</p>
+
+<h3>Вторичные ресурсы</h3>
+
+<ul>
+  <li><strong>Кристаллы (самоцветы)</strong> — для VIP и премиум операций</li>
+  <li><strong>Медали за состязание</strong> — для магазинов</li>
+  <li><strong>Клей</strong> — для прокачки снаряжения</li>
+  <li><strong>Серебро союза</strong> — для навыков союза</li>
+</ul>
+
+<hr>
+
+<h2>Источники ресурсов</h2>
+
+<h3>Источник 1: Плитки на карте (ГЛАВНЫЙ)</h3>
+
+<p><strong>Как это работает:</strong></p>
+<ol>
+  <li>На карте находятся плитки (клетки) разных уровней</li>
+  <li>Отправляете туда войска (марш)</li>
+  <li>За N часов собираете определённое количество ресурсов</li>
+</ol>
+
+<p><strong>Уровни плиток и награды:</strong></p>
+
+<table>
+  <thead>
+    <tr><th>Уровень плитки</th><th>Ресурса за сбор</th><th>Время сбора</th><th>Требование</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>100K</td><td>30 мин</td><td>Любой</td></tr>
+    <tr><td>2</td><td>300K</td><td>1 час</td><td>Минимум</td></tr>
+    <tr><td>3</td><td>700K</td><td>2 часа</td><td>-</td></tr>
+    <tr><td>4</td><td>1.5M</td><td>4 часа</td><td>-</td></tr>
+    <tr><td>5</td><td>3.5M</td><td>6 часов</td><td>-</td></tr>
+    <tr><td>6</td><td>7M</td><td>9 часов</td><td>-</td></tr>
+    <tr><td>7</td><td>14M</td><td>11 часов</td><td>Мощная армия</td></tr>
+  </tbody>
+</table>
+
+<p><strong>На практике:</strong></p>
+<ul>
+  <li>День 1-5: собираете плитки 1-3</li>
+  <li>День 6-20: плитки 4-5</li>
+  <li>День 21+: плитки 6-7</li>
+</ul>
+
+<p><strong>С дневным ускорением (-100%):</strong></p>
+<ul>
+  <li>Плитка 7: вместо 11 часов = 5.5 часов</li>
+</ul>
+
+<h3>Источник 2: Здания производства</h3>
+
+<p><strong>Завод (Металл):</strong></p>
+<ul>
+  <li>Производит ~700+ металла в час</li>
+  <li>С наукой "Экономика" +5% = 740 в час</li>
+  <li>Плюс герой (бонус) = 850+ в час</li>
+</ul>
+
+<p><strong>Лесопилка (Дерево):</strong></p>
+<ul>
+  <li>Аналогично</li>
+</ul>
+
+<p><strong>Теплица (Еда):</strong></p>
+<ul>
+  <li>Аналогично</li>
+</ul>
+
+<p><strong>Как они работают:</strong> Пассивно, каждый час дают определённое количество.</p>
+
+<p><strong>На ранних этапах (неделя 1-2):</strong> Полезны, держите все на максимуме.</p>
+
+<p><strong>На поздних этапах (месяц 2+):</strong> Вспомогательны, главное — плитки.</p>
+
+<h3>Источник 3: События и магазины</h3>
+
+<p><strong>События:</strong></p>
+<ul>
+  <li>Туро-черепашка: +5% сбора за период, награды включают ресурсы</li>
+  <li>Игра по-крупному: открытые сундучки с ресурсами</li>
+  <li>Дуэль союзов: сундучки с ресурсами</li>
+</ul>
+
+<p><strong>Магазины:</strong></p>
+<ul>
+  <li>Магазин резервуара: можно купить ресурсы за очки</li>
+  <li>Магазины героев: редко продают ресурсы</li>
+</ul>
+
+<hr>
+
+<h2>Оптимизация сбора ресурсов</h2>
+
+<h3>Дневной ускоритель сбора (600 кристаллов/24 часа)</h3>
+
+<p><strong>Что он даёт:</strong> +100% скорость сбора ресурсов.</p>
+
+<p><strong>Как это работает:</strong></p>
+<ul>
+  <li>Плитка, которая собирается 11 часов, собирается 5.5 часов</li>
+  <li>За один день можно собрать 2 плитки вместо 1</li>
+</ul>
+
+<p><strong>Эффект в цифрах:</strong></p>
+<ul>
+  <li>14M ресурса за 5.5 часов вместо 11 часов</li>
+  <li>За день: 28M ресурса вместо 14M</li>
+  <li>Это <strong>+100% к дневному доходу</strong></li>
+</ul>
+
+<p><strong>Когда покупать:</strong> Постоянно, если есть кристаллы после VIP.</p>
+
+<h3>Союзный навык "Сбор урожая"</h3>
+
+<p><strong>Что он даёт:</strong> +15-35% к скорости сбора на 6 часов.</p>
+
+<p><strong>Перезарядка:</strong> 11 часов.</p>
+
+<p><strong>Когда использовать:</strong> Когда весь союз договорился собирать ресурсы.</p>
+
+<p><strong>С ускорением (-100%) + с навыком (+35%):</strong></p>
+<ul>
+  <li>Плитка 7: вместо 11 часов = 3.6 часа</li>
+  <li>За 6 часов активности: 2 плитки (вместо 1.09 без навыка)</li>
+</ul>
+
+<h3>Наука "Экономика" в лаборатории</h3>
+
+<p><strong>Что даёт:</strong> +% к скорости сбора и производства.</p>
+
+<p><strong>Максимум:</strong> До 100%+ к каждому типу ресурса.</p>
+
+<p><strong>На практике:</strong></p>
+<ul>
+  <li>Скорость сбора: +5% за каждую ветку = +25% общее</li>
+  <li>С ускорением и навыком это складывается</li>
+</ul>
+
+<hr>
+
+<h2>Специальные события сбора</h2>
+
+<h3>Воскресенье (Черепашка)</h3>
+
+<p><strong>Бонус:</strong> +% за каждый собранный ресурс в "Турбо-черепашке".</p>
+
+<p><strong>Стратегия:</strong></p>
+<ol>
+  <li>В субботу отправляете войска на 9+ часов сбора</li>
+  <li>Они возвращаются в воскресенье и засчитываются в событие</li>
+  <li>Получаете бонусные очки события</li>
+</ol>
+
+<p><strong>Эффект:</strong> Можете за один день набрать столько очков, сколько за неделю обычно.</p>
+
+<h3>Понедельник (Дуэль)</h3>
+
+<p><strong>Бонус:</strong> +% за каждый собранный ресурс в "Дуэли союзов".</p>
+
+<p><strong>Аналогично воскресенью:</strong> Подготовьте сбор в воскресенье, получите бонус в понедельник.</p>
+
+<h3>Союзный бонус "Сбор урожая"</h3>
+
+<p><strong>Когда активируется:</strong> По договорённости с союзом.</p>
+
+<p><strong>Типично:</strong> Понедельник и воскресенье.</p>
+
+<hr>
+
+<h2>Что нужно копить и когда</h2>
+
+<h3>Ранний этап (день 1-10)</h3>
+
+<p><strong>Копите:</strong></p>
+<ul>
+  <li>Кристаллы (на VIP)</li>
+  <li>Ресурсы (для строительства)</li>
+</ul>
+
+<p><strong>Не копите:</strong></p>
+<ul>
+  <li>Ускорения (тратьте на стройки)</li>
+  <li>Снаряжение (его будет мало всё равно)</li>
+</ul>
+
+<h3>Средний этап (день 11-40)</h3>
+
+<p><strong>Копите:</strong></p>
+<ul>
+  <li>Ускорения строительства (под события)</li>
+  <li>Медали за состязание (для магазинов)</li>
+  <li>Чертежи снаряжения (редкие)</li>
+</ul>
+
+<p><strong>Тратьте:</strong></p>
+<ul>
+  <li>Ресурсы (на строительство и науки)</li>
+  <li>Кристаллы (только на VIP и дневной ускоритель)</li>
+</ul>
+
+<h3>Поздний этап (день 41+)</h3>
+
+<p><strong>Копите:</strong></p>
+<ul>
+  <li>Чертежи снаряжения (очень редкие)</li>
+  <li>Клей (для прокачки)</li>
+  <li>Клетки титана (редкие)</li>
+</ul>
+
+<p><strong>Обычно копите в сумке:</strong></p>
+<ul>
+  <li>Медали за состязание (для магазина дуэли)</li>
+  <li>Релокаторы (на перемещение)</li>
+  <li>Прочие мелкие бонусы</li>
+</ul>
+
+<hr>
+
+<h2>График активного сбора</h2>
+
+<h3>Идеальная неделя</h3>
+
+<table>
+  <thead>
+    <tr><th>День</th><th>Утро</th><th>Дневное время</th><th>Вечер</th><th>Ночь</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Пн</strong></td><td>Сбор ресурсов (черт на плитке 6+)</td><td>Участие в Дуэли</td><td>Активный сбор</td><td>Отправить войска на ночь</td></tr>
+    <tr><td><strong>Вт</strong></td><td>Собрать ресурсы</td><td>Развитие</td><td>Сбор</td><td>Отправить войска</td></tr>
+    <tr><td><strong>Ср</strong></td><td>Собрать</td><td>Развитие</td><td>Сбор</td><td>Отправить</td></tr>
+    <tr><td><strong>Чт</strong></td><td>Собрать</td><td>Развитие</td><td>Сбор</td><td>Отправить</td></tr>
+    <tr><td><strong>Пт</strong></td><td>Собрать</td><td>Развитие</td><td>Сбор</td><td>Отправить</td></tr>
+    <tr><td><strong>Сб</strong></td><td>Собрать</td><td>Подготовка к воскресенью</td><td>Отправить войска на 9+ часов</td><td>Ждём воскресенья</td></tr>
+    <tr><td><strong>Вс</strong></td><td>Черепашка!</td><td>Черепашка!</td><td>Черепашка!</td><td>Готовимся к понедельнику</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Система магазинов</h2>
+
+<h3>Магазин резервуара</h3>
+
+<p><strong>Валюта:</strong> Очки битвы за резервуар.</p>
+
+<p><strong>Что купить в приоритет:</strong></p>
+<ol>
+  <li><strong>Чертежи снаряжения</strong> — самое редкое</li>
+  <li><strong>Клетки титана</strong> — редкие</li>
+  <li><strong>Клей</strong> — по мере необходимости</li>
+</ol>
+
+<h3>Магазин арены</h3>
+
+<p><strong>Валюта:</strong> Монеты арены.</p>
+
+<p><strong>Что купить:</strong></p>
+<ol>
+  <li><strong>Билеты на арену</strong> — для прохода в события</li>
+  <li><strong>Ускорения</strong> — всегда полезны</li>
+  <li><strong>Фиолетовые герои</strong> — если нужны карточки</li>
+</ol>
+
+<hr>
+
+<h2>Финальные советы по фарму</h2>
+
+<ol>
+  <li><strong>Активность = ресурсы.</strong> Чем больше вы онлайн, тем больше собираете.</li>
+  <li><strong>Плитки > здания.</strong> На плитках в 10 раз больше ресурса, чем дают здания.</li>
+  <li><strong>Синхронизируйте с союзом.</strong> Сбор в "очки события" эффективнее обычного.</li>
+  <li><strong>Используйте ускорители.</strong> Дневной ускоритель — лучшая инвестиция после VIP.</li>
+  <li><strong>Копите под события.</strong> Игра по-крупному и Черепашка дают бонусные награды.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Главная цель:</strong> К концу первого месяца собирать плитки 5-6 уровня, к концу второго — плитки 7 уровня.</p>
+</blockquote>
+
+<p class="guide-nav">
+  <a href="guide-snariazhenie.html">← Снаряжение и артефакты</a>
+  <a href="guide-sobytiya.html">События и оптимизация →</a>
+</p>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <p>© 2026 Союз [Dan]Dangers | Штат 174 | Tiles Survive</p>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+  document.querySelector('.nav-menu').classList.toggle('active');
+});
+document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+  toggle.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      this.parentElement.classList.toggle('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

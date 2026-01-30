@@ -1490,3 +1490,64 @@ h3 .icon {
   border-color: var(--danger);
   color: var(--danger);
 }
+
+/* ============================================
+   Навигация между гайдами
+   ============================================ */
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.guide-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.guide-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.guide-nav a:hover {
+  border-color: var(--primary);
+  background: var(--bg-elevated);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .guide-nav {
+    flex-direction: column;
+  }
+  
+  .guide-nav a {
+    width: 100%;
+    justify-content: center;
+  }
+}

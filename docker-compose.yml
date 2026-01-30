@@ -11,7 +11,26 @@ services:
     depends_on:
       - php
     networks:
-      - wiki-net
+      - wiki_wiki-net
+
+  updater:
+    image: alpine:latest
+    container_name: static_updater
+    networks:
+      - wiki_wiki-net
+    volumes:
+      - ./site:/site
+      - ./update.sh:/update.sh:ro
+    command: >
+      sh -c "
+        apk add --no-cache git &&
+        cd /site &&
+        if [ ! -d .git ]; then
+          git clone https://github.com/idpro1313/dandangers.git .;
+        fi &&
+        sh /update.sh
+      "
+    restart: unless-stopped
 
   php:
     image: php:8.2-fpm-alpine
@@ -20,8 +39,9 @@ services:
     volumes:
       - ./site:/usr/share/nginx/html      # Тот же путь для PHP
     networks:
-      - wiki-net
+      - wiki_wiki-net
 
 networks:
-  wiki-net:
-    driver: bridge
+  wiki_wiki-net:
+    external: true
+    name: wiki_wiki-net
