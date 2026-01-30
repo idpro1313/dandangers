@@ -1,12 +1,19 @@
+# Tiles Survive Wiki - robots.txt
+# https://dandangers.ru
+
 User-agent: *
 Allow: /
-Disallow: /.git/
 
 # Sitemap
 Sitemap: https://dandangers.ru/sitemap.xml
 
-# Яндекс
-Host: https://dandangers.ru
+# Disallow temporary and service files
+Disallow: /*.files/
+Disallow: /lootbar instr.files/
 
-# Crawl-delay для бережной индексации
-Crawl-delay: 1
+# Allow all crawlers to index images
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: YandexImages
+Allow: /
