@@ -10,6 +10,13 @@ Sitemap: https://dandangers.ru/sitemap.xml
 # Disallow temporary and service files
 Disallow: /*.files/
 
+# Disallow admin panel
+Disallow: /admin.html
+Disallow: /admin-api.php
+Disallow: /admin-config.php
+Disallow: /backups/
+Disallow: /admin-changes.log
+
 # Allow all crawlers to index images
 User-agent: Googlebot-Image
 Allow: /
