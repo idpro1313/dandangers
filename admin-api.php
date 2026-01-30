@@ -153,13 +153,32 @@ switch ($action) {
         
         $content = file_get_contents($path);
         
-        // Извлекаем только содержимое между <main> и </main> или <body> и </body>
+        // Извлекаем содержимое content-wrapper
         $editableContent = '';
         
-        // Пробуем найти content-wrapper
-        if (preg_match('/<div class="content-wrapper[^"]*">(.*?)<\/div>\s*<\/main>/s', $content, $matches)) {
-            $editableContent = trim($matches[1]);
-        } elseif (preg_match('/<main[^>]*>(.*?)<\/main>/s', $content, $matches)) {
+        // Ищем content-wrapper и извлекаем его содержимое
+        $startMarker = '<div class="content-wrapper">';
+        $endMarker = '</main>';
+        
+        $startPos = strpos($content, $startMarker);
+        if ($startPos !== false) {
+            $startPos += strlen($startMarker);
+            $endPos = strpos($content, $endMarker, $startPos);
+            if ($endPos !== false) {
+                // Находим последний </div> перед </main>
+                $section = substr($content, $startPos, $endPos - $startPos);
+                // Убираем последний </div> который закрывает content-wrapper
+                $lastDivPos = strrpos($section, '</div>');
+                if ($lastDivPos !== false) {
+                    $editableContent = trim(substr($section, 0, $lastDivPos));
+                } else {
+                    $editableContent = trim($section);
+                }
+            }
+        }
+        
+        // Fallback: пробуем найти <main>
+        if (empty($editableContent) && preg_match('/<main[^>]*>(.*)<\/main>/s', $content, $matches)) {
             $editableContent = trim($matches[1]);
         }
         
@@ -210,12 +229,25 @@ switch ($action) {
         // Заменяем содержимое content-wrapper
         $updatedContent = $originalContent;
         
-        if (preg_match('/(<div class="content-wrapper[^"]*">)(.*?)(<\/div>\s*<\/main>)/s', $originalContent, $matches)) {
-            $updatedContent = preg_replace(
-                '/(<div class="content-wrapper[^"]*">)(.*?)(<\/div>\s*<\/main>)/s',
-                '$1' . "\n" . $newContent . "\n" . '$3',
-                $originalContent
-            );
+        $startMarker = '<div class="content-wrapper">';
+        $endMarker = '</main>';
+        
+        $startPos = strpos($originalContent, $startMarker);
+        if ($startPos !== false) {
+            $contentStart = $startPos + strlen($startMarker);
+            $endPos = strpos($originalContent, $endMarker, $contentStart);
+            if ($endPos !== false) {
+                // Находим последний </div> перед </main>
+                $section = substr($originalContent, $contentStart, $endPos - $contentStart);
+                $lastDivPos = strrpos($section, '</div>');
+                if ($lastDivPos !== false) {
+                    $actualEnd = $contentStart + $lastDivPos;
+                    // Собираем новый контент
+                    $updatedContent = substr($originalContent, 0, $contentStart) . 
+                                      "\n" . $newContent . "\n" . 
+                                      substr($originalContent, $actualEnd);
+                }
+            }
         }
         
         // Сохраняем
