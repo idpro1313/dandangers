@@ -3,10 +3,48 @@
  * API для админ-панели редактирования страниц
  */
 
+// Отключаем вывод ошибок в HTML
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+// Устанавливаем обработчик ошибок для вывода в JSON
+set_error_handler(function($severity, $message, $file, $line) {
+    throw new ErrorException($message, 0, $severity, $file, $line);
+});
+
+set_exception_handler(function($e) {
+    http_response_code(500);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode([
+        'success' => false,
+        'error' => 'PHP Error: ' . $e->getMessage(),
+        'file' => basename($e->getFile()),
+        'line' => $e->getLine()
+    ]);
+    exit;
+});
+
+// Буферизация вывода для перехвата любых ошибок до header
+ob_start();
+
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 
+// Проверяем существование конфига
+if (!file_exists(__DIR__ . '/admin-config.php')) {
+    echo json_encode(['success' => false, 'error' => 'Файл admin-config.php не найден']);
+    exit;
+}
+
 require_once 'admin-config.php';
+
+// Очищаем буфер (на случай если были предупреждения)
+ob_end_clean();
+
+// Убеждаемся что $ALLOWED_FILES доступна
+if (!isset($ALLOWED_FILES) || !is_array($ALLOWED_FILES)) {
+    $ALLOWED_FILES = [];
+}
 
 // CORS для локальной разработки (уберите в продакшене если не нужно)
 header('Access-Control-Allow-Origin: *');
@@ -69,7 +107,6 @@ switch ($action) {
             break;
         }
         
-        global $ALLOWED_FILES;
         $files = [];
         
         foreach ($ALLOWED_FILES as $file) {
@@ -94,7 +131,6 @@ switch ($action) {
         }
         
         $file = $_GET['file'] ?? '';
-        global $ALLOWED_FILES;
         
         if (!in_array($file, $ALLOWED_FILES)) {
             echo json_encode(['success' => false, 'error' => 'Файл не разрешён для редактирования']);
@@ -232,7 +268,6 @@ switch ($action) {
         // Определяем оригинальный файл из имени бэкапа
         $originalFile = preg_replace('/\.\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\.bak$/', '', basename($backupFile));
         
-        global $ALLOWED_FILES;
         if (!in_array($originalFile, $ALLOWED_FILES)) {
             echo json_encode(['success' => false, 'error' => 'Файл не разрешён']);
             break;

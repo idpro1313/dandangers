@@ -1,0 +1,18 @@
+# Конфиденциальные данные
+admin-password.php
+admin-changes.log
+
+# Резервные копии
+backups/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
