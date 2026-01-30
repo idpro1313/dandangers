@@ -270,18 +270,27 @@
     
     .ql-editor {
       padding: 24px;
+      color: #1a1a1a !important;
+      background: white;
     }
     
-    .ql-editor h1 { font-size: 2em; margin-bottom: 0.5em; }
-    .ql-editor h2 { font-size: 1.5em; margin-bottom: 0.5em; }
-    .ql-editor h3 { font-size: 1.25em; margin-bottom: 0.5em; }
-    .ql-editor p { margin-bottom: 1em; }
-    .ql-editor ul, .ql-editor ol { margin-bottom: 1em; padding-left: 2em; }
+    .ql-editor h1 { font-size: 2em; margin-bottom: 0.5em; color: #1a1a1a; }
+    .ql-editor h2 { font-size: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    .ql-editor h3 { font-size: 1.25em; margin-bottom: 0.5em; color: #1a1a1a; }
+    .ql-editor p { margin-bottom: 1em; color: #1a1a1a; }
+    .ql-editor ul, .ql-editor ol { margin-bottom: 1em; padding-left: 2em; color: #1a1a1a; }
+    .ql-editor li { color: #1a1a1a; }
+    .ql-editor a { color: #0066cc; }
     .ql-editor blockquote { 
       border-left: 4px solid var(--primary); 
       padding-left: 16px; 
       margin: 1em 0;
       color: #666;
+    }
+    
+    /* Placeholder text */
+    .ql-editor.ql-blank::before {
+      color: #999;
     }
     
     /* Status Bar */

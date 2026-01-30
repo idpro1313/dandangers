@@ -9,6 +9,10 @@ error_reporting(E_ALL);
 
 // Устанавливаем обработчик ошибок для вывода в JSON
 set_error_handler(function($severity, $message, $file, $line) {
+    // Игнорируем ошибки, подавленные с @ (error_reporting = 0)
+    if (!(error_reporting() & $severity)) {
+        return false;
+    }
     throw new ErrorException($message, 0, $severity, $file, $line);
 });
 
