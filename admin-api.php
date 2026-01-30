@@ -55,14 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-// Функция логирования
+// Функция логирования (безопасная - не ломает систему при ошибке записи)
 function logAction($action, $file, $user = 'admin') {
-    if (!ENABLE_LOGGING) return;
+    if (!defined('ENABLE_LOGGING') || !ENABLE_LOGGING) return;
+    if (!defined('LOG_FILE')) return;
     
     $timestamp = date('Y-m-d H:i:s');
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $log = "[$timestamp] [$ip] [$user] $action: $file\n";
-    file_put_contents(LOG_FILE, $log, FILE_APPEND | LOCK_EX);
+    
+    // @ подавляет ошибку если нет прав на запись
+    @file_put_contents(LOG_FILE, $log, FILE_APPEND | LOCK_EX);
 }
 
 // Проверка авторизации
