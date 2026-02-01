@@ -5,6 +5,23 @@ version: '3.8'
 # /var/static-site/site/docker/   <- этот docker-compose.yml
 
 services:
+  caddy:
+    image: caddy:alpine
+    container_name: static_caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"   # HTTP/3
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+    networks:
+      - static-net
+
   web:
     image: nginx:alpine
     container_name: static_web
@@ -15,13 +32,11 @@ services:
     depends_on:
       - php
     networks:
-      - wiki_wiki-net
+      - static-net
 
   updater:
     image: alpine:latest
     container_name: static_updater
-    networks:
-      - wiki_wiki-net
     volumes:
       - ../:/site                         # Папка сайта на уровень выше
       - ./update.sh:/update.sh:ro
@@ -35,6 +50,8 @@ services:
         sh /update.sh
       "
     restart: unless-stopped
+    networks:
+      - static-net
 
   php:
     image: php:8.2-fpm-alpine
@@ -43,9 +60,12 @@ services:
     volumes:
       - ../:/usr/share/nginx/html         # Папка сайта на уровень выше
     networks:
-      - wiki_wiki-net
+      - static-net
+
+volumes:
+  caddy_data:
+  caddy_config:
 
 networks:
-  wiki_wiki-net:
-    external: true
-    name: wiki_wiki-net
+  static-net:
+    driver: bridge
