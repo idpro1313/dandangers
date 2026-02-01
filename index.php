@@ -326,24 +326,42 @@ function show404() {
 // ФУНКЦИЯ: Рендеринг гайдов
 // ============================================================
 function renderGuide($page) {
+    // DEBUG
+    if (isset($_GET['debug'])) {
+        echo "<pre>renderGuide('$page') started\n";
+    }
+    
     require_once __DIR__ . '/guides-config.php';
+    
+    if (isset($_GET['debug'])) echo "guides-config loaded\n";
     
     if (!$page || !guideExists($page)) {
         show404();
     }
     
+    if (isset($_GET['debug'])) echo "guideExists: OK\n";
+    
     $config = getGuideConfig($page);
     $navLinks = getGuideNavLinks($page);
+    
+    if (isset($_GET['debug'])) echo "config loaded\n";
     
     $mdFile = __DIR__ . '/content/guides/' . $page . '.md';
     if (!file_exists($mdFile)) {
         show404();
     }
     
+    if (isset($_GET['debug'])) echo "md file exists\n";
+    
     $mdContent = file_get_contents($mdFile);
+    
+    if (isset($_GET['debug'])) echo "md content: " . strlen($mdContent) . " bytes\n";
+    
     $Parsedown = new Parsedown();
     $Parsedown->setSafeMode(false);
     $htmlContent = $Parsedown->text($mdContent);
+    
+    if (isset($_GET['debug'])) echo "parsedown OK: " . strlen($htmlContent) . " bytes\n</pre>"; exit;
     
     $wordCount = str_word_count(strip_tags($htmlContent), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ');
     
