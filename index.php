@@ -719,14 +719,48 @@ function renderPage($data) {
   </style>
 <?php elseif ($type === 'schedule'): ?>
   <style>
-    .content-wrapper table{font-size:var(--font-sm);width:100%;border-collapse:separate;border-spacing:0;background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border);margin:var(--space-4) 0}
-    .content-wrapper th{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:white;font-weight:600;padding:var(--space-3) var(--space-4);text-align:left;white-space:nowrap}
+    /* Обертка для таблиц с горизонтальным скроллом */
+    .content-wrapper{overflow-x:visible}
+    .table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:var(--space-4) 0;border-radius:var(--radius-md);border:1px solid var(--border)}
+    .content-wrapper table{font-size:var(--font-sm);width:100%;border-collapse:separate;border-spacing:0;background:var(--bg-elevated);margin:0;border:none;min-width:600px}
+    .content-wrapper th{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:white;font-weight:600;padding:var(--space-3) var(--space-4);text-align:left;white-space:nowrap;position:sticky;top:0;z-index:1}
     .content-wrapper td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-light);vertical-align:top}
     .content-wrapper tr:last-child td{border-bottom:none}
     .content-wrapper tbody tr:hover{background:var(--bg-card-hover)}
-    @media(max-width:768px){.content-wrapper table{font-size:var(--font-xs);display:block;overflow-x:auto}.content-wrapper th,.content-wrapper td{padding:var(--space-2) var(--space-3);min-width:100px}}
     .content-wrapper h2{margin-top:var(--space-8)}
+    /* Первая колонка (время) sticky на мобильных */
+    .content-wrapper td:first-child,.content-wrapper th:first-child{position:sticky;left:0;background:var(--bg-elevated);z-index:2;border-right:2px solid var(--border)}
+    .content-wrapper th:first-child{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);z-index:3}
+    /* Мобильные стили */
+    @media(max-width:768px){
+      .content-wrapper table{font-size:12px;min-width:500px}
+      .content-wrapper th,.content-wrapper td{padding:8px 10px}
+      .content-wrapper td:first-child,.content-wrapper th:first-child{min-width:70px;font-size:11px}
+      .table-wrapper{margin:var(--space-3) calc(-1 * var(--space-4));border-radius:0;border-left:none;border-right:none}
+    }
+    @media(max-width:480px){
+      .content-wrapper table{font-size:11px;min-width:450px}
+      .content-wrapper th,.content-wrapper td{padding:6px 8px}
+      .content-wrapper h2{font-size:1.1rem}
+      .content-wrapper h3{font-size:1rem}
+    }
+    /* Индикатор скролла */
+    .scroll-hint{display:none;text-align:center;font-size:12px;color:var(--text-muted);padding:var(--space-2);background:var(--bg-card);border-radius:var(--radius-sm);margin-bottom:var(--space-2)}
+    @media(max-width:768px){.scroll-hint{display:block}}
   </style>
+  <script>
+    // Добавляем обертку для всех таблиц
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelectorAll('.content-wrapper table').forEach(function(table){
+        if(!table.parentElement.classList.contains('table-wrapper')){
+          var wrapper=document.createElement('div');
+          wrapper.className='table-wrapper';
+          table.parentNode.insertBefore(wrapper,table);
+          wrapper.appendChild(table);
+        }
+      });
+    });
+  </script>
 <?php endif; ?>
 
   <script type="text/javascript">

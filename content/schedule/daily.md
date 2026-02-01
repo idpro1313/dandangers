@@ -2,6 +2,8 @@
 
 > **Таблица в Google Sheets** — [Открыть полную таблицу](https://docs.google.com/spreadsheets/d/1LNwSQmwL2mVGAzRzcOWajhyFZxooOhBPoufAp9w6n_8/edit?usp=sharing)
 
+<p class="scroll-hint">📱 Прокрутите таблицу влево-вправо</p>
+
 ---
 
 ## Сводная таблица на неделю
