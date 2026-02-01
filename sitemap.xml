@@ -226,28 +226,38 @@
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://dandangers.ru/content/lootbar/lootbar-step1-self-topup.png</image:loc>
-      <image:title>LootBar Step 1 - Self TopUp</image:title>
-      <image:caption>Шаг 1: Выбор Self-TopUp в LootBar для пополнения Tiles Survive</image:caption>
+      <image:title>LootBar Self-TopUp - Шаг 1</image:title>
+      <image:caption>Шаг 1: Выбор метода Self-TopUp для пополнения Tiles Survive</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step2-funplus-login.png</image:loc>
-      <image:title>LootBar Step 2 - FunPlus Login</image:title>
-      <image:caption>Шаг 2: Вход через FunPlus ID</image:caption>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step2-login.png</image:loc>
+      <image:title>LootBar - Вход в аккаунт</image:title>
+      <image:caption>Шаг 2: Вход в игровой аккаунт</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step2-login-options.png</image:loc>
+      <image:title>LootBar - Способы входа</image:title>
+      <image:caption>Выбор способа входа в аккаунт</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step2-phone-login.png</image:loc>
+      <image:title>LootBar - Вход по телефону</image:title>
+      <image:caption>Вход по номеру телефона</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://dandangers.ru/content/lootbar/lootbar-step3-confirm.png</image:loc>
-      <image:title>LootBar Step 3 - Confirm Purchase</image:title>
-      <image:caption>Шаг 3: Подтверждение покупки</image:caption>
+      <image:title>LootBar - Подтверждение покупки</image:title>
+      <image:caption>Шаг 3: Подтверждение информации о покупке</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step4-wait.png</image:loc>
-      <image:title>LootBar Step 4 - Wait</image:title>
-      <image:caption>Шаг 4: Ожидание доставки</image:caption>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step4-processing.png</image:loc>
+      <image:title>LootBar - Обработка</image:title>
+      <image:caption>Шаг 4: Процесс погашения подарочного пакета</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step5-check.png</image:loc>
-      <image:title>LootBar Step 5 - Check In Game</image:title>
-      <image:caption>Шаг 5: Проверка в игре</image:caption>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step4-complete.png</image:loc>
+      <image:title>LootBar - Завершение</image:title>
+      <image:caption>Завершение пополнения Tiles Survive</image:caption>
     </image:image>
   </url>
   
