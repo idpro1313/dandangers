@@ -2,6 +2,7 @@
 /**
  * Единый роутер сайта dandangers.ru
  * Обрабатывает все динамические страницы: гайды, lootbar, расписание
+ * SEO-оптимизированная версия
  */
 
 // Подключаем Parsedown
@@ -23,7 +24,6 @@ switch ($route) {
         renderSchedule($page);
         break;
     default:
-        // 404 или редирект на главную
         http_response_code(404);
         header('Location: /');
         exit;
@@ -35,18 +35,15 @@ switch ($route) {
 function renderGuide($page) {
     require_once __DIR__ . '/guides-config.php';
     
-    // Проверяем существование гайда
     if (!$page || !guideExists($page)) {
         http_response_code(404);
         header('Location: guide-biblioteka.html');
         exit;
     }
     
-    // Получаем конфиг
     $config = getGuideConfig($page);
     $navLinks = getGuideNavLinks($page);
     
-    // Путь к MD файлу
     $mdFile = __DIR__ . '/content/guides/' . $page . '.md';
     if (!file_exists($mdFile)) {
         http_response_code(404);
@@ -54,14 +51,28 @@ function renderGuide($page) {
         exit;
     }
     
-    // Конвертируем MD в HTML
     $mdContent = file_get_contents($mdFile);
     $Parsedown = new Parsedown();
     $Parsedown->setSafeMode(false);
     $htmlContent = $Parsedown->text($mdContent);
     
+    // Считаем примерное количество слов для SEO
+    $wordCount = str_word_count(strip_tags($htmlContent), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ');
+    
     // Schema.org
     $schemaType = $config['schema_type'] ?? 'Article';
+    $canonical = 'https://dandangers.ru/guide-' . $page . '.html';
+    
+    // Определяем articleSection
+    $articleSection = 'Гайды';
+    if (isset($config['is_old']) && $config['is_old']) {
+        $articleSection = 'Старые гайды';
+    } elseif (isset($config['is_about']) && $config['is_about']) {
+        $articleSection = 'О союзе';
+    } elseif (isset($config['is_library']) && $config['is_library']) {
+        $articleSection = 'Библиотека';
+    }
+    
     if ($schemaType === 'FAQPage') {
         $schemaJson = json_encode([
             '@context' => 'https://schema.org',
@@ -74,29 +85,54 @@ function renderGuide($page) {
             '@type' => 'Article',
             'headline' => $config['schema_headline'],
             'description' => $config['og_description'],
-            'image' => 'https://dandangers.ru/dangers.jpg',
-            'author' => ['@type' => 'Organization', 'name' => 'Союз [Dan]Dangers'],
+            'image' => [
+                '@type' => 'ImageObject',
+                'url' => 'https://dandangers.ru/dangers.jpg',
+                'width' => 512,
+                'height' => 512
+            ],
+            'author' => [
+                '@type' => 'Organization',
+                'name' => 'Союз [Dan]Dangers',
+                'url' => 'https://dandangers.ru/'
+            ],
             'publisher' => [
                 '@type' => 'Organization',
                 'name' => 'Tiles Survive Wiki',
-                'logo' => ['@type' => 'ImageObject', 'url' => 'https://dandangers.ru/dangers.jpg']
+                'url' => 'https://dandangers.ru/',
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => 'https://dandangers.ru/dangers.jpg',
+                    'width' => 512,
+                    'height' => 512
+                ]
             ],
             'datePublished' => '2026-01-29',
             'dateModified' => date('Y-m-d'),
-            'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => 'https://dandangers.ru/guide-' . $page . '.html']
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id' => $canonical
+            ],
+            'inLanguage' => 'ru-RU',
+            'articleSection' => $articleSection,
+            'wordCount' => $wordCount
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
     
-    // Экранируем
-    $title = esc($config['title']);
-    $description = esc($config['description']);
-    $keywords = esc($config['keywords']);
-    $ogTitle = esc($config['og_title']);
-    $ogDescription = esc($config['og_description']);
-    $h1 = esc($config['h1']);
-    $canonical = 'https://dandangers.ru/guide-' . $page . '.html';
+    // BreadcrumbList
+    $breadcrumbItems = [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Главная', 'item' => 'https://dandangers.ru/'],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Библиотека', 'item' => 'https://dandangers.ru/guide-biblioteka.html']
+    ];
+    if ($page !== 'biblioteka') {
+        $breadcrumbItems[] = ['@type' => 'ListItem', 'position' => 3, 'name' => $config['nav_title'], 'item' => $canonical];
+    }
+    $breadcrumbJson = json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $breadcrumbItems
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     
-    // Определяем активные состояния навигации
     $navActive = [
         'about' => ($page === 'soyuz-dangers'),
         'library' => (!isset($config['is_old']) && !isset($config['is_about']) && !isset($config['is_library'])),
@@ -105,16 +141,16 @@ function renderGuide($page) {
         'lootbar' => false
     ];
     
-    // Рендерим
     renderPage([
-        'title' => $title,
-        'description' => $description,
-        'keywords' => $keywords,
-        'ogTitle' => $ogTitle,
-        'ogDescription' => $ogDescription,
+        'title' => esc($config['title']),
+        'description' => esc($config['description']),
+        'keywords' => esc($config['keywords']),
+        'ogTitle' => esc($config['og_title']),
+        'ogDescription' => esc($config['og_description']),
         'canonical' => $canonical,
         'schemaJson' => $schemaJson,
-        'h1' => $h1,
+        'breadcrumbJson' => $breadcrumbJson,
+        'h1' => esc($config['h1']),
         'content' => $htmlContent,
         'navActive' => $navActive,
         'page' => $page,
@@ -160,8 +196,9 @@ function renderLootbar($page) {
         $htmlContent
     );
     
-    // Schema.org
+    $canonical = 'https://dandangers.ru/lootbar-' . $page . '.html';
     $schemaType = $config['schema_type'] ?? 'Article';
+    
     if ($schemaType === 'HowTo') {
         $schemaJson = json_encode([
             '@context' => 'https://schema.org',
@@ -169,12 +206,13 @@ function renderLootbar($page) {
             'name' => $config['schema_headline'],
             'description' => $config['description'],
             'image' => 'https://dandangers.ru/dangers.jpg',
+            'totalTime' => 'PT5M',
             'step' => [
-                ['@type' => 'HowToStep', 'name' => 'Выберите метод Self-TopUp', 'text' => 'После покупки подарочного пакета на LootBar выберите метод Self-TopUp.'],
-                ['@type' => 'HowToStep', 'name' => 'Войдите в игровой аккаунт', 'text' => 'Войдите в интерфейс игры через FunPlus ID.'],
-                ['@type' => 'HowToStep', 'name' => 'Подтвердите покупку', 'text' => 'Подтвердите информацию и получите подарочный пакет.'],
-                ['@type' => 'HowToStep', 'name' => 'Дождитесь завершения', 'text' => 'Не закрывайте интерфейс во время погашения.'],
-                ['@type' => 'HowToStep', 'name' => 'Проверьте результат', 'text' => 'Войдите в игру и проверьте полученные предметы.']
+                ['@type' => 'HowToStep', 'position' => 1, 'name' => 'Выберите метод Self-TopUp', 'text' => 'После покупки подарочного пакета на LootBar выберите метод Self-TopUp.'],
+                ['@type' => 'HowToStep', 'position' => 2, 'name' => 'Войдите в игровой аккаунт', 'text' => 'Войдите в интерфейс игры через FunPlus ID.'],
+                ['@type' => 'HowToStep', 'position' => 3, 'name' => 'Подтвердите покупку', 'text' => 'Подтвердите информацию и получите подарочный пакет.'],
+                ['@type' => 'HowToStep', 'position' => 4, 'name' => 'Дождитесь завершения', 'text' => 'Не закрывайте интерфейс во время погашения.'],
+                ['@type' => 'HowToStep', 'position' => 5, 'name' => 'Проверьте результат', 'text' => 'Войдите в игру и проверьте полученные предметы.']
             ]
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     } else {
@@ -184,7 +222,7 @@ function renderLootbar($page) {
             'headline' => $config['schema_headline'],
             'description' => $config['og_description'],
             'image' => 'https://dandangers.ru/dangers.jpg',
-            'author' => ['@type' => 'Organization', 'name' => 'Союз [Dan]Dangers'],
+            'author' => ['@type' => 'Organization', 'name' => 'Союз [Dan]Dangers', 'url' => 'https://dandangers.ru/'],
             'publisher' => [
                 '@type' => 'Organization',
                 'name' => 'Tiles Survive Wiki',
@@ -192,9 +230,25 @@ function renderLootbar($page) {
             ],
             'datePublished' => '2026-01-29',
             'dateModified' => date('Y-m-d'),
-            'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => 'https://dandangers.ru/lootbar-' . $page . '.html']
+            'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $canonical],
+            'inLanguage' => 'ru-RU',
+            'articleSection' => 'Донат и скидки'
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
+    
+    // BreadcrumbList
+    $breadcrumbItems = [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Главная', 'item' => 'https://dandangers.ru/'],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Скидки', 'item' => 'https://dandangers.ru/lootbar-discounts.html']
+    ];
+    if ($page !== 'discounts') {
+        $breadcrumbItems[] = ['@type' => 'ListItem', 'position' => 3, 'name' => $config['nav_title'], 'item' => $canonical];
+    }
+    $breadcrumbJson = json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $breadcrumbItems
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     
     $navActive = [
         'about' => false,
@@ -210,8 +264,9 @@ function renderLootbar($page) {
         'keywords' => esc($config['keywords']),
         'ogTitle' => esc($config['og_title']),
         'ogDescription' => esc($config['og_description']),
-        'canonical' => 'https://dandangers.ru/lootbar-' . $page . '.html',
+        'canonical' => $canonical,
         'schemaJson' => $schemaJson,
+        'breadcrumbJson' => $breadcrumbJson,
         'h1' => esc($config['h1']),
         'content' => $htmlContent,
         'navActive' => $navActive,
@@ -250,13 +305,15 @@ function renderSchedule($page) {
     $Parsedown->setSafeMode(false);
     $htmlContent = $Parsedown->text($mdContent);
     
+    $canonical = 'https://dandangers.ru/daily.html';
+    
     $schemaJson = json_encode([
         '@context' => 'https://schema.org',
         '@type' => 'Article',
         'headline' => $config['schema_headline'],
         'description' => $config['og_description'],
         'image' => 'https://dandangers.ru/dangers.jpg',
-        'author' => ['@type' => 'Organization', 'name' => 'Союз [Dan]Dangers'],
+        'author' => ['@type' => 'Organization', 'name' => 'Союз [Dan]Dangers', 'url' => 'https://dandangers.ru/'],
         'publisher' => [
             '@type' => 'Organization',
             'name' => 'Tiles Survive Wiki',
@@ -264,7 +321,19 @@ function renderSchedule($page) {
         ],
         'datePublished' => '2026-01-15',
         'dateModified' => date('Y-m-d'),
-        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => 'https://dandangers.ru/daily.html']
+        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $canonical],
+        'inLanguage' => 'ru-RU',
+        'articleSection' => 'Расписание'
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    
+    // BreadcrumbList
+    $breadcrumbJson = json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Главная', 'item' => 'https://dandangers.ru/'],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Расписание', 'item' => $canonical]
+        ]
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     
     $navActive = [
@@ -281,8 +350,9 @@ function renderSchedule($page) {
         'keywords' => esc($config['keywords']),
         'ogTitle' => esc($config['og_title']),
         'ogDescription' => esc($config['og_description']),
-        'canonical' => 'https://dandangers.ru/daily.html',
+        'canonical' => $canonical,
         'schemaJson' => $schemaJson,
+        'breadcrumbJson' => $breadcrumbJson,
         'h1' => esc($config['h1']),
         'content' => $htmlContent,
         'navActive' => $navActive,
@@ -302,30 +372,59 @@ function esc($str) {
 
 function renderPage($data) {
     extract($data);
+    $breadcrumbJson = $breadcrumbJson ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105280577','ym');ym(105280577,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/105280577" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://mc.yandex.ru">
+  <link rel="dns-prefetch" href="https://mc.yandex.ru">
+  
+  <!-- SEO Meta Tags -->
+  <title><?= $title ?></title>
   <meta name="description" content="<?= $description ?>">
   <meta name="keywords" content="<?= $keywords ?>">
   <meta name="author" content="Союз [Dan]Dangers">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="yandex" content="index, follow">
   <link rel="canonical" href="<?= $canonical ?>">
+  <link rel="alternate" hreflang="ru" href="<?= $canonical ?>">
+  <link rel="alternate" hreflang="x-default" href="<?= $canonical ?>">
+  
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="<?= $canonical ?>">
   <meta property="og:title" content="<?= $ogTitle ?>">
   <meta property="og:description" content="<?= $ogDescription ?>">
   <meta property="og:image" content="https://dandangers.ru/dangers.jpg">
-  <title><?= $title ?></title>
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Tiles Survive Wiki">
+  <meta property="article:author" content="Союз [Dan]Dangers">
+  <meta property="article:publisher" content="https://dandangers.ru/">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="<?= $ogTitle ?>">
+  <meta name="twitter:description" content="<?= $ogDescription ?>">
+  <meta name="twitter:image" content="https://dandangers.ru/dangers.jpg">
+  
+  <!-- Schema.org -->
   <script type="application/ld+json"><?= $schemaJson ?></script>
+<?php if ($breadcrumbJson): ?>
+  <script type="application/ld+json"><?= $breadcrumbJson ?></script>
+<?php endif; ?>
+  
   <link rel="icon" type="image/jpeg" href="dangers.jpg">
+  <link rel="apple-touch-icon" href="dangers.jpg">
   <link rel="stylesheet" href="modern-styles.css">
+  
 <?php if ($type === 'lootbar'): ?>
   <style>
     .lootbar-hero { background: linear-gradient(135deg, #fff9e6 0%, #ffe6a0 50%, #ffd54f 100%); border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-6); text-align: center; border: 2px solid #ffc107; }
@@ -353,13 +452,19 @@ function renderPage($data) {
     .content-wrapper h2 { margin-top: var(--space-8); }
   </style>
 <?php endif; ?>
+
+  <!-- Yandex.Metrika -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=105280577','ym');ym(105280577,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/105280577" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="nav-container">
-    <a href="index.html" class="nav-logo"><img src="dangers.jpg" alt="DanDangers" class="nav-logo-img">TS Wiki</a>
-    <button class="nav-toggle" aria-label="Меню">☰</button>
+    <a href="index.html" class="nav-logo"><img src="dangers.jpg" alt="Tiles Survive Wiki - DanDangers" class="nav-logo-img">TS Wiki</a>
+    <button class="nav-toggle" aria-label="Открыть меню навигации">☰</button>
     <ul class="nav-menu">
       <li><a href="index.html">Главная</a></li>
       <li><a href="guide-soyuz-dangers.html"<?= $navActive['about'] ? ' class="active"' : '' ?>>О союзе</a></li>
@@ -416,13 +521,27 @@ function renderPage($data) {
 </a>
 <?php endif; ?>
 
-<div class="content-wrapper<?= $type === 'schedule' ? ' wide' : '' ?>">
+<article class="content-wrapper<?= $type === 'schedule' ? ' wide' : '' ?>">
 
 <?php if ($type === 'guide'): ?>
-<p class="breadcrumb"><a href="guide-biblioteka.html">← Библиотека гайдов</a></p>
+<nav class="breadcrumb" aria-label="Хлебные крошки">
+  <a href="index.html">Главная</a> › 
+  <a href="guide-biblioteka.html">Библиотека</a><?php if ($page !== 'biblioteka'): ?> › 
+  <span><?= $config['nav_title'] ?></span>
+<?php endif; ?>
+</nav>
 <h1><?= $h1 ?></h1>
 <?php elseif ($type === 'lootbar' && $page !== 'discounts'): ?>
-<p class="breadcrumb"><a href="lootbar-discounts.html">← Скидки и купоны</a></p>
+<nav class="breadcrumb" aria-label="Хлебные крошки">
+  <a href="index.html">Главная</a> › 
+  <a href="lootbar-discounts.html">Скидки</a> › 
+  <span><?= $config['nav_title'] ?></span>
+</nav>
+<?php elseif ($type === 'schedule'): ?>
+<nav class="breadcrumb" aria-label="Хлебные крошки">
+  <a href="index.html">Главная</a> › 
+  <span>Расписание</span>
+</nav>
 <?php endif; ?>
 
 <?php if ($type === 'lootbar'): ?>
@@ -436,35 +555,35 @@ function renderPage($data) {
 <?php endif; ?>
 
 <?php if ($type === 'guide' && $navLinks): ?>
-<p class="guide-nav">
+<nav class="guide-nav" aria-label="Навигация по гайдам">
   <?php if ($navLinks['prev']): ?>
-    <a href="guide-<?= $navLinks['prev']['slug'] ?>.html">← <?= esc($navLinks['prev']['title']) ?></a>
+    <a href="guide-<?= $navLinks['prev']['slug'] ?>.html" rel="prev">← <?= esc($navLinks['prev']['title']) ?></a>
   <?php else: ?>
     <a href="guide-biblioteka.html">← К списку гайдов</a>
   <?php endif; ?>
   <?php if ($navLinks['next']): ?>
-    <a href="guide-<?= $navLinks['next']['slug'] ?>.html">Следующий: <?= esc($navLinks['next']['title']) ?> →</a>
+    <a href="guide-<?= $navLinks['next']['slug'] ?>.html" rel="next">Следующий: <?= esc($navLinks['next']['title']) ?> →</a>
   <?php endif; ?>
-</p>
+</nav>
 <?php elseif ($type === 'lootbar' && $navLinks): ?>
-<div class="lootbar-nav">
+<nav class="lootbar-nav" aria-label="Навигация по разделу">
   <?php if ($navLinks['prev']): ?>
-    <a href="lootbar-<?= $navLinks['prev']['slug'] ?>.html">← <?= esc($navLinks['prev']['title']) ?></a>
+    <a href="lootbar-<?= $navLinks['prev']['slug'] ?>.html" rel="prev">← <?= esc($navLinks['prev']['title']) ?></a>
   <?php else: ?>
     <span></span>
   <?php endif; ?>
   <?php if ($navLinks['next']): ?>
-    <a href="lootbar-<?= $navLinks['next']['slug'] ?>.html"><?= esc($navLinks['next']['title']) ?> →</a>
+    <a href="lootbar-<?= $navLinks['next']['slug'] ?>.html" rel="next"><?= esc($navLinks['next']['title']) ?> →</a>
   <?php endif; ?>
-</div>
+</nav>
 <?php endif; ?>
 
-</div>
+</article>
 </main>
 
 <footer class="site-footer">
   <div class="footer-container">
-    <p>© <?= date('Y') ?> Союз [Dan]Dangers | Штат 174 | Tiles Survive</p>
+    <p>© <?= date('Y') ?> Союз [Dan]Dangers | Штат 174 | <a href="https://dandangers.ru/">Tiles Survive Wiki</a></p>
   </div>
 </footer>
 

@@ -1,6 +1,130 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Preconnect для ускорения загрузки -->
+  <link rel="preconnect" href="https://mc.yandex.ru">
+  <link rel="dns-prefetch" href="https://mc.yandex.ru">
+  
+  <!-- SEO Meta Tags -->
+  <title>Tiles Survive Wiki — Гайды, Герои, Расписание | [Dan]Dangers</title>
+  <meta name="description" content="Tiles Survive Wiki — полный справочник по игре от союза [Dan]Dangers. 18 гайдов по героям, прокачке, ресурсам. Расписание ивентов, VIP система, F2P стратегии. Штат 174.">
+  <meta name="keywords" content="tiles survive, tiles survive гайд, tiles survive wiki, tiles survive герои, tiles survive прокачка, tiles survive расписание, dandangers, тайлс сурвайв, tiles survive game, мобильная игра tiles survive, zombie survival game, tiles survive android, tiles survive ios, tiles survive советы, tiles survive донат, tiles survive f2p, tiles survive альянс, tiles survive vip, tiles survive лаборатория, tiles survive события, tiles survive быстрый старт">
+  <meta name="author" content="Союз [Dan]Dangers">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="yandex" content="index, follow">
+  <link rel="canonical" href="https://dandangers.ru/">
+  <link rel="alternate" hreflang="ru" href="https://dandangers.ru/">
+  <link rel="alternate" hreflang="x-default" href="https://dandangers.ru/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dandangers.ru/">
+  <meta property="og:title" content="Tiles Survive Wiki — Полный справочник по игре">
+  <meta property="og:description" content="18 подробных гайдов по Tiles Survive: герои, здания, VIP, события. Расписание ивентов и F2P стратегии от союза [Dan]Dangers.">
+  <meta property="og:image" content="https://dandangers.ru/dangers.jpg">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Tiles Survive Wiki - Союз DanDangers">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Tiles Survive Wiki">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tiles Survive Wiki | [Dan]Dangers">
+  <meta name="twitter:description" content="Полный справочник по Tiles Survive. 18 гайдов, расписание ивентов, прокачка героев.">
+  <meta name="twitter:image" content="https://dandangers.ru/dangers.jpg">
+  
+  <!-- Структурированные данные: WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tiles Survive Wiki",
+    "alternateName": ["DanDangers Wiki", "Тайлс Сурвайв Вики"],
+    "url": "https://dandangers.ru/",
+    "description": "Полный справочник по игре Tiles Survive с 18 гайдами по героям, прокачке и расписанием ивентов",
+    "inLanguage": "ru-RU",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Союз [Dan]Dangers",
+      "url": "https://dandangers.ru/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://dandangers.ru/dangers.jpg",
+        "width": 512,
+        "height": 512
+      }
+    }
+  }
+  </script>
+  
+  <!-- Структурированные данные: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Союз [Dan]Dangers",
+    "alternateName": "DanDangers",
+    "url": "https://dandangers.ru/",
+    "logo": "https://dandangers.ru/dangers.jpg",
+    "description": "Активное сообщество игроков Tiles Survive на штате 174"
+  }
+  </script>
+  
+  <!-- Структурированные данные: CollectionPage с гайдами -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Библиотека гайдов Tiles Survive",
+    "description": "Полная коллекция из 18 подробных гайдов по игре Tiles Survive",
+    "url": "https://dandangers.ru/",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": 18,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Введение и основные стратегии", "url": "https://dandangers.ru/guide-vvedenie.html"},
+        {"@type": "ListItem", "position": 2, "name": "Развитие без доната", "url": "https://dandangers.ru/guide-razvitie.html"},
+        {"@type": "ListItem", "position": 3, "name": "Здания и приоритеты", "url": "https://dandangers.ru/guide-zdaniya.html"},
+        {"@type": "ListItem", "position": 4, "name": "Лаборатория и науки", "url": "https://dandangers.ru/guide-laboratoriya.html"},
+        {"@type": "ListItem", "position": 5, "name": "Герои и боевые группы", "url": "https://dandangers.ru/guide-geroi.html"},
+        {"@type": "ListItem", "position": 6, "name": "Снаряжение и артефакты", "url": "https://dandangers.ru/guide-snariazhenie.html"},
+        {"@type": "ListItem", "position": 7, "name": "Ресурсы и фарм", "url": "https://dandangers.ru/guide-resursy.html"},
+        {"@type": "ListItem", "position": 8, "name": "События и оптимизация", "url": "https://dandangers.ru/guide-sobytiya.html"},
+        {"@type": "ListItem", "position": 9, "name": "Союз и карта", "url": "https://dandangers.ru/guide-soyuz.html"},
+        {"@type": "ListItem", "position": 10, "name": "Специальные механики", "url": "https://dandangers.ru/guide-mehaniki.html"},
+        {"@type": "ListItem", "position": 11, "name": "Быстрый старт", "url": "https://dandangers.ru/guide-start.html"},
+        {"@type": "ListItem", "position": 12, "name": "VIP система", "url": "https://dandangers.ru/guide-vip.html"},
+        {"@type": "ListItem", "position": 13, "name": "Календарь и расписание", "url": "https://dandangers.ru/guide-raspisanie.html"},
+        {"@type": "ListItem", "position": 14, "name": "Частые ошибки", "url": "https://dandangers.ru/guide-oshibki.html"},
+        {"@type": "ListItem", "position": 15, "name": "Чек-лист достижений", "url": "https://dandangers.ru/guide-cheklista.html"},
+        {"@type": "ListItem", "position": 16, "name": "Глоссарий", "url": "https://dandangers.ru/guide-glossariy.html"},
+        {"@type": "ListItem", "position": 17, "name": "Таблицы сравнения", "url": "https://dandangers.ru/guide-tablicy.html"},
+        {"@type": "ListItem", "position": 18, "name": "FAQ", "url": "https://dandangers.ru/guide-faq.html"}
+      ]
+    }
+  }
+  </script>
+  
+  <!-- Структурированные данные: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://dandangers.ru/"}
+    ]
+  }
+  </script>
+  
+  <link rel="icon" type="image/jpeg" href="dangers.jpg">
+  <link rel="apple-touch-icon" href="dangers.jpg">
+  <link rel="stylesheet" href="modern-styles.css">
+  
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
@@ -9,62 +133,9 @@
           for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
           k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
       })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105280577', 'ym');
-
       ym(105280577, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/105280577" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tiles Survive Wiki — полный справочник по игре. Гайды по героям, прокачке, ресурсам, расписание ивентов. Союз [Dan]Dangers, штат 174.">
-  <meta name="keywords" content="tiles survive, tiles survive гайд, tiles survive wiki, tiles survive герои, tiles survive прокачка, tiles survive расписание, dandangers, тайлс сурвайв, tiles survive game, мобильная игра tiles survive, zombie survival game, tiles survive android, tiles survive ios, tiles survive обзор, beginner guide, tiles survive советы, tips and strategies, tiles survive донат, tiles survive f2p, tiles survive альянс">
-  <meta name="author" content="Союз [Dan]Dangers">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://dandangers.ru/">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dandangers.ru/">
-  <meta property="og:title" content="Tiles Survive Wiki | Союз [Dan]Dangers">
-  <meta property="og:description" content="Полный справочник по игре Tiles Survive. Гайды, расписание ивентов, прокачка героев. Штат 174.">
-  <meta property="og:image" content="https://dandangers.ru/dangers.jpg">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Tiles Survive Wiki">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tiles Survive Wiki | Союз [Dan]Dangers">
-  <meta name="twitter:description" content="Полный справочник по игре Tiles Survive. Гайды, расписание ивентов, прокачка героев.">
-  <meta name="twitter:image" content="https://dandangers.ru/dangers.jpg">
-  
-  <!-- Яндекс -->
-  <meta name="yandex-verification" content="">
-  
-  <title>Tiles Survive Wiki — Гайды, Герои, Расписание | [Dan]Dangers</title>
-  
-  <!-- Структурированные данные -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Tiles Survive Wiki",
-    "alternateName": "DanDangers Wiki",
-    "url": "https://dandangers.ru/",
-    "description": "Полный справочник по игре Tiles Survive с гайдами по героям, прокачке и расписанием ивентов",
-    "inLanguage": "ru",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Союз [Dan]Dangers",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://dandangers.ru/dangers.jpg"
-      }
-    }
-  }
-  </script>
-  <link rel="icon" type="image/jpeg" href="dangers.jpg">
-  <link rel="apple-touch-icon" href="dangers.jpg">
-  <link rel="stylesheet" href="modern-styles.css">
 </head>
 <body>
 

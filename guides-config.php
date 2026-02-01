@@ -14,9 +14,22 @@ $GUIDES = [
         'og_description' => 'Активное сообщество игроков Tiles Survive на штате 174. Командная игра и взаимопомощь.',
         'schema_headline' => 'Союз [Dan]Dangers — Сообщество Tiles Survive',
         'prev' => null,
-        'next' => 'vvedenie',
+        'next' => 'biblioteka',
         'nav_title' => 'О союзе',
         'is_about' => true
+    ],
+    'biblioteka' => [
+        'title' => 'Библиотека гайдов — Tiles Survive Wiki | 18 руководств',
+        'h1' => 'Библиотека гайдов Tiles Survive',
+        'description' => 'Полная библиотека из 18 гайдов по Tiles Survive — от введения до FAQ. VIP система, герои, лаборатория, события, здания, ресурсы и частые ошибки новичков.',
+        'keywords' => 'tiles survive гайды, tiles survive библиотека, tiles survive руководства, tiles survive wiki гайды, полный гайд tiles survive, tiles survive для новичков, tiles survive VIP, tiles survive герои гайд',
+        'og_title' => 'Библиотека гайдов Tiles Survive — 18 руководств',
+        'og_description' => 'Полная коллекция гайдов по игре Tiles Survive. От основ до продвинутых стратегий.',
+        'schema_headline' => 'Библиотека гайдов Tiles Survive — 18 подробных руководств',
+        'prev' => 'soyuz-dangers',
+        'next' => 'vvedenie',
+        'nav_title' => 'Библиотека',
+        'is_library' => true
     ],
     'vvedenie' => [
         'title' => 'Введение и основные стратегии — Tiles Survive Wiki',

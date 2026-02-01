@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- ========== ГЛАВНЫЕ СТРАНИЦЫ ========== -->
+  
   <!-- Главная страница -->
   <url>
     <loc>https://dandangers.ru/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://dandangers.ru/dangers.jpg</image:loc>
+      <image:title>Tiles Survive Wiki - Союз DanDangers</image:title>
+    </image:image>
   </url>
   
   <!-- О союзе -->
@@ -13,62 +22,18 @@
     <loc>https://dandangers.ru/guide-soyuz-dangers.html</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Расписание -->
-  <url>
-    <loc>https://dandangers.ru/daily.html</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  
-  <!-- Старые гайды (теперь через guide-*.html) -->
+  <!-- Расписание ивентов -->
   <url>
-    <loc>https://dandangers.ru/guide-17sovetov.html</loc>
+    <loc>https://dandangers.ru/daily.html</loc>
     <lastmod>2026-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   
-  <url>
-    <loc>https://dandangers.ru/guide-bigguide.html</loc>
-    <lastmod>2026-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://dandangers.ru/guide-fullguide.html</loc>
-    <lastmod>2026-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://dandangers.ru/guide-heroes-old.html</loc>
-    <lastmod>2026-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://dandangers.ru/guide-lab-old.html</loc>
-    <lastmod>2026-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://dandangers.ru/guide-res-old.html</loc>
-    <lastmod>2026-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Библиотека гайдов -->
+  <!-- Библиотека гайдов (индекс) -->
   <url>
     <loc>https://dandangers.ru/guide-biblioteka.html</loc>
     <lastmod>2026-01-29</lastmod>
@@ -76,133 +41,180 @@
     <priority>0.95</priority>
   </url>
   
+  <!-- ========== ОСНОВНЫЕ ГАЙДЫ (18 штук) ========== -->
+  
   <url>
     <loc>https://dandangers.ru/guide-vvedenie.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-razvitie.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-zdaniya.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-laboratoriya.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-geroi.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-snariazhenie.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-resursy.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-sobytiya.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-soyuz.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-mehaniki.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-start.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-vip.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-raspisanie.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-oshibki.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-cheklista.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-glossariy.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-tablicy.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://dandangers.ru/guide-faq.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   
-  <!-- Донат и скидки -->
+  <!-- ========== СТАРЫЕ ГАЙДЫ ========== -->
+  
+  <url>
+    <loc>https://dandangers.ru/guide-17sovetov.html</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dandangers.ru/guide-bigguide.html</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dandangers.ru/guide-fullguide.html</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dandangers.ru/guide-heroes-old.html</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dandangers.ru/guide-lab-old.html</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dandangers.ru/guide-res-old.html</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- ========== ДОНАТ И СКИДКИ ========== -->
+  
   <url>
     <loc>https://dandangers.ru/lootbar-discounts.html</loc>
     <lastmod>2026-01-29</lastmod>
@@ -214,6 +226,7 @@
     <loc>https://dandangers.ru/lootbar-instruction.html</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
+  
 </urlset>

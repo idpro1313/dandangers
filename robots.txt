@@ -4,25 +4,57 @@
 User-agent: *
 Allow: /
 
+# Разрешаем основные HTML страницы
+Allow: /*.html$
+
 # Sitemap
 Sitemap: https://dandangers.ru/sitemap.xml
 
-# Disallow temporary and service files
-Disallow: /*.files/
+# Host для Яндекса
+Host: https://dandangers.ru
 
-# Disallow admin panel and sensitive files
+# Запрещаем служебные файлы
 Disallow: /admin.html
 Disallow: /admin-api.php
 Disallow: /admin-config.php
 Disallow: /admin-password.php
 Disallow: /admin-password.example.php
-Disallow: /backups/
+Disallow: /guides-config.php
+Disallow: /lootbar-config.php
+Disallow: /schedule-config.php
 Disallow: /admin-changes.log
-Disallow: /*.php$
 
-# Allow all crawlers to index images
+# Запрещаем служебные папки
+Disallow: /backups/
+Disallow: /content/
+Disallow: /lib/
+Disallow: /docker/
+Disallow: /*.files/
+
+# Разрешаем изображения для всех ботов
 User-agent: Googlebot-Image
 Allow: /
+Allow: /content/lootbar/*.png
+Allow: /content/lootbar/*.jpg
 
 User-agent: YandexImages
 Allow: /
+Allow: /content/lootbar/*.png
+Allow: /content/lootbar/*.jpg
+
+# Специальные правила для основных поисковиков
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+User-agent: Mail.RU_Bot
+Allow: /
+Crawl-delay: 2
+
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1

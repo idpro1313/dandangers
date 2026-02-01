@@ -1511,6 +1511,14 @@ h3 .icon {
   text-decoration: underline;
 }
 
+.breadcrumb span {
+  color: var(--text-secondary);
+}
+
+nav.breadcrumb {
+  color: var(--text-secondary);
+}
+
 .guide-nav {
   display: flex;
   justify-content: space-between;
