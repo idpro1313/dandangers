@@ -335,7 +335,10 @@ function renderGuide($page) {
     
     if (isset($_GET['debug'])) echo "guides-config loaded\n";
     
+    if (isset($_GET['debug'])) echo "page='$page', guideExists=" . (guideExists($page) ? 'YES' : 'NO') . "\n";
+    
     if (!$page || !guideExists($page)) {
+        if (isset($_GET['debug'])) echo "CALLING show404()\n";
         show404();
     }
     
