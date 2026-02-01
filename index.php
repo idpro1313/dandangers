@@ -7,26 +7,25 @@
 // Подключаем Parsedown
 require_once __DIR__ . '/lib/Parsedown.php';
 
-// Определяем тип страницы из параметров
-$route = isset($_GET['route']) ? $_GET['route'] : '';
-$page = isset($_GET['page']) ? preg_replace('/[^a-z0-9-]/', '', $_GET['page']) : '';
+// Получаем URI без query string
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// Роутинг
-switch ($route) {
-    case 'home':
-        renderHome();
-        break;
-    case 'guide':
-        renderGuide($page);
-        break;
-    case 'lootbar':
-        renderLootbar($page);
-        break;
-    case 'schedule':
-        renderSchedule($page);
-        break;
-    default:
-        show404();
+// Роутинг на основе URL
+if ($uri === '/' || $uri === '') {
+    // Главная страница
+    renderHome();
+} elseif (preg_match('#^/guide-([a-z0-9-]+)\.html$#', $uri, $matches)) {
+    // Гайды: /guide-{slug}.html
+    renderGuide($matches[1]);
+} elseif (preg_match('#^/lootbar-([a-z0-9-]+)\.html$#', $uri, $matches)) {
+    // LootBar: /lootbar-{slug}.html
+    renderLootbar($matches[1]);
+} elseif ($uri === '/daily.html') {
+    // Расписание
+    renderSchedule('daily');
+} else {
+    // 404
+    show404();
 }
 
 // ============================================================
@@ -563,8 +562,22 @@ function esc($str) {
 
 function renderNav($navActive = []) {
     $navActive = array_merge(['home' => false, 'about' => false, 'library' => false, 'old' => false, 'schedule' => false, 'lootbar' => false], $navActive);
-    $page = $_GET['page'] ?? '';
-    $type = $_GET['route'] ?? '';
+    
+    // Определяем текущую страницу из URL
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $page = '';
+    $type = '';
+    
+    if (preg_match('#^/guide-([a-z0-9-]+)\.html$#', $uri, $m)) {
+        $type = 'guide';
+        $page = $m[1];
+    } elseif (preg_match('#^/lootbar-([a-z0-9-]+)\.html$#', $uri, $m)) {
+        $type = 'lootbar';
+        $page = $m[1];
+    } elseif ($uri === '/daily.html') {
+        $type = 'schedule';
+        $page = 'daily';
+    }
 ?>
 <nav class="site-nav">
   <div class="nav-container">
