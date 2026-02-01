@@ -1,0 +1,20 @@
+{
+  "name": "Tiles Survive Wiki — DanDangers",
+  "short_name": "TS Wiki",
+  "description": "Полный справочник по игре Tiles Survive от союза [Dan]Dangers. 18 гайдов, расписание, герои.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1a",
+  "theme_color": "#00d4aa",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/dangers.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "ru",
+  "categories": ["games", "entertainment"]
+}

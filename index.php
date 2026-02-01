@@ -85,9 +85,13 @@ function renderHome() {
   
   <link rel="icon" type="image/jpeg" href="/dangers.jpg">
   <link rel="apple-touch-icon" href="/dangers.jpg">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#00d4aa">
   <meta name="msapplication-TileColor" content="#00d4aa">
   <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TS Wiki">
   <link rel="stylesheet" href="/modern-styles.css">
   
   <script type="text/javascript">
@@ -700,9 +704,13 @@ function renderPage($data) {
   
   <link rel="icon" type="image/jpeg" href="/dangers.jpg">
   <link rel="apple-touch-icon" href="/dangers.jpg">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#00d4aa">
   <meta name="msapplication-TileColor" content="#00d4aa">
   <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TS Wiki">
   <link rel="stylesheet" href="/modern-styles.css">
   
 <?php if ($type === 'lootbar'): ?>
