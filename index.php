@@ -4,11 +4,7 @@
  * Обрабатывает ВСЕ страницы: главная, гайды, lootbar, расписание
  */
 
-// DEBUG: Временно включено
-if (isset($_GET['debug'])) {
-    echo "<pre>DEBUG:\nREQUEST_URI: " . $_SERVER['REQUEST_URI'] . "\nParsed URI: " . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "\n";
-    // Продолжаем выполнение чтобы увидеть вывод из функций
-}
+// DEBUG отключен
 
 // Подключаем библиотеки и конфиги (в глобальной области!)
 require_once __DIR__ . '/lib/Parsedown.php';
@@ -329,40 +325,22 @@ function show404() {
 // ФУНКЦИЯ: Рендеринг гайдов
 // ============================================================
 function renderGuide($page) {
-    // DEBUG
-    if (isset($_GET['debug'])) {
-        echo "<pre>renderGuide('$page') started\n";
-        echo "page='$page', guideExists=" . (guideExists($page) ? 'YES' : 'NO') . "\n";
-    }
-    
     if (!$page || !guideExists($page)) {
-        if (isset($_GET['debug'])) echo "CALLING show404()\n";
         show404();
     }
     
-    if (isset($_GET['debug'])) echo "guideExists: OK\n";
-    
     $config = getGuideConfig($page);
     $navLinks = getGuideNavLinks($page);
-    
-    if (isset($_GET['debug'])) echo "config loaded\n";
     
     $mdFile = __DIR__ . '/content/guides/' . $page . '.md';
     if (!file_exists($mdFile)) {
         show404();
     }
     
-    if (isset($_GET['debug'])) echo "md file exists\n";
-    
     $mdContent = file_get_contents($mdFile);
-    
-    if (isset($_GET['debug'])) echo "md content: " . strlen($mdContent) . " bytes\n";
-    
     $Parsedown = new Parsedown();
     $Parsedown->setSafeMode(false);
     $htmlContent = $Parsedown->text($mdContent);
-    
-    if (isset($_GET['debug'])) echo "parsedown OK: " . strlen($htmlContent) . " bytes\n</pre>"; exit;
     
     $wordCount = str_word_count(strip_tags($htmlContent), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ');
     
