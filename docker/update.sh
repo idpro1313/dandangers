@@ -1,6 +1,10 @@
 #!/bin/sh
+
+# Добавляем /site в safe.directory (решает "dubious ownership")
+git config --global --add safe.directory /site
+
 while true; do
-  sleep 60  # Проверять каждые 5 минут
+  sleep 60  # Проверять каждую минуту
   cd /site
   git pull origin main
   
