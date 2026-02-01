@@ -6,8 +6,8 @@
 
 // DEBUG: Временно включено
 if (isset($_GET['debug'])) {
-    echo "<pre>DEBUG:\nREQUEST_URI: " . $_SERVER['REQUEST_URI'] . "\nParsed URI: " . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "</pre>";
-    exit;
+    echo "<pre>DEBUG:\nREQUEST_URI: " . $_SERVER['REQUEST_URI'] . "\nParsed URI: " . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "\n";
+    // Продолжаем выполнение чтобы увидеть вывод из функций
 }
 
 // Подключаем Parsedown
