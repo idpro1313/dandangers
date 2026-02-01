@@ -19,10 +19,7 @@ if (file_exists($passwordFile)) {
 $ALLOWED_FILES = [
     'index.html',
     'main.html',
-    'daily.html',
     'tabl.html',
-    'lootbar.html',
-    'lootbar-instruction.html',
     'novoe.html'
 ];
 
@@ -56,7 +53,9 @@ $ALLOWED_MD_FILES = [
     'content/guides/res-old.md' => '[Старый] Ресурсы',
     // LootBar (донат)
     'content/lootbar/discounts.md' => '[Донат] Скидки LootBar',
-    'content/lootbar/instruction.md' => '[Донат] Инструкция пополнения'
+    'content/lootbar/instruction.md' => '[Донат] Инструкция пополнения',
+    // Расписание
+    'content/schedule/daily.md' => 'Расписание событий'
 ];
 
 // Директория с файлами сайта (относительно admin-api.php)

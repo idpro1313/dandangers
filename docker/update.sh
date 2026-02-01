@@ -1,6 +1,6 @@
 #!/bin/sh
 while true; do
-  sleep 300  # Проверять каждые 5 минут
+  sleep 60  # Проверять каждые 5 минут
   cd /site
   git pull origin main
   
