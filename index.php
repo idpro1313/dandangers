@@ -755,7 +755,6 @@ function renderPage($data) {
   <span><?= $config['nav_title'] ?></span>
 <?php endif; ?>
 </nav>
-<h1><?= $h1 ?></h1>
 <?php elseif ($type === 'lootbar' && $page !== 'discounts'): ?>
 <nav class="breadcrumb" aria-label="Хлебные крошки">
   <a href="/">Главная</a> › 
