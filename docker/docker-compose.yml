@@ -1,12 +1,16 @@
 version: '3.8'
 
+# Структура на сервере:
+# /var/static-site/site/          <- файлы сайта
+# /var/static-site/site/docker/   <- этот docker-compose.yml
+
 services:
   web:
     image: nginx:alpine
     container_name: static_web
     restart: unless-stopped
     volumes:
-      - ./site:/usr/share/nginx/html      # Убрали :ro для возможности записи
+      - ../:/usr/share/nginx/html         # Папка сайта на уровень выше
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - php
@@ -19,7 +23,7 @@ services:
     networks:
       - wiki_wiki-net
     volumes:
-      - ./site:/site
+      - ../:/site                         # Папка сайта на уровень выше
       - ./update.sh:/update.sh:ro
     command: >
       sh -c "
@@ -37,7 +41,7 @@ services:
     container_name: static_php
     restart: unless-stopped
     volumes:
-      - ./site:/usr/share/nginx/html      # Тот же путь для PHP
+      - ../:/usr/share/nginx/html         # Папка сайта на уровень выше
     networks:
       - wiki_wiki-net
 
