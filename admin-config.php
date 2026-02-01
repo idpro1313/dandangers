@@ -53,7 +53,10 @@ $ALLOWED_MD_FILES = [
     'content/guides/fullguide.md' => '[Старый] Полный гайд',
     'content/guides/heroes-old.md' => '[Старый] Герои',
     'content/guides/lab-old.md' => '[Старый] Лаборатория',
-    'content/guides/res-old.md' => '[Старый] Ресурсы'
+    'content/guides/res-old.md' => '[Старый] Ресурсы',
+    // LootBar (донат)
+    'content/lootbar/discounts.md' => '[Донат] Скидки LootBar',
+    'content/lootbar/instruction.md' => '[Донат] Инструкция пополнения'
 ];
 
 // Директория с файлами сайта (относительно admin-api.php)
