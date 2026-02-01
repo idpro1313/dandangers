@@ -5,7 +5,6 @@
   
   <!-- ========== ГЛАВНЫЕ СТРАНИЦЫ ========== -->
   
-  <!-- Главная страница -->
   <url>
     <loc>https://dandangers.ru/</loc>
     <lastmod>2026-01-29</lastmod>
@@ -14,10 +13,10 @@
     <image:image>
       <image:loc>https://dandangers.ru/dangers.jpg</image:loc>
       <image:title>Tiles Survive Wiki - Союз DanDangers</image:title>
+      <image:caption>Логотип союза [Dan]Dangers - Tiles Survive Wiki</image:caption>
     </image:image>
   </url>
   
-  <!-- О союзе -->
   <url>
     <loc>https://dandangers.ru/guide-soyuz-dangers.html</loc>
     <lastmod>2026-01-29</lastmod>
@@ -25,7 +24,6 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- Расписание ивентов -->
   <url>
     <loc>https://dandangers.ru/daily.html</loc>
     <lastmod>2026-01-29</lastmod>
@@ -33,7 +31,6 @@
     <priority>0.95</priority>
   </url>
   
-  <!-- Библиотека гайдов (индекс) -->
   <url>
     <loc>https://dandangers.ru/guide-biblioteka.html</loc>
     <lastmod>2026-01-29</lastmod>
@@ -227,6 +224,31 @@
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step1-self-topup.png</image:loc>
+      <image:title>LootBar Step 1 - Self TopUp</image:title>
+      <image:caption>Шаг 1: Выбор Self-TopUp в LootBar для пополнения Tiles Survive</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step2-funplus-login.png</image:loc>
+      <image:title>LootBar Step 2 - FunPlus Login</image:title>
+      <image:caption>Шаг 2: Вход через FunPlus ID</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step3-confirm.png</image:loc>
+      <image:title>LootBar Step 3 - Confirm Purchase</image:title>
+      <image:caption>Шаг 3: Подтверждение покупки</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step4-wait.png</image:loc>
+      <image:title>LootBar Step 4 - Wait</image:title>
+      <image:caption>Шаг 4: Ожидание доставки</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://dandangers.ru/content/lootbar/lootbar-step5-check.png</image:loc>
+      <image:title>LootBar Step 5 - Check In Game</image:title>
+      <image:caption>Шаг 5: Проверка в игре</image:caption>
+    </image:image>
   </url>
   
 </urlset>

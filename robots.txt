@@ -4,8 +4,17 @@
 User-agent: *
 Allow: /
 
-# Разрешаем основные HTML страницы
+# Разрешаем все публичные страницы
 Allow: /*.html$
+Allow: /
+
+# Разрешаем изображения
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /content/lootbar/*.png
+Allow: /content/lootbar/*.jpg
 
 # Sitemap
 Sitemap: https://dandangers.ru/sitemap.xml
@@ -13,48 +22,57 @@ Sitemap: https://dandangers.ru/sitemap.xml
 # Host для Яндекса
 Host: https://dandangers.ru
 
-# Запрещаем служебные файлы
+# ===== ЗАПРЕЩАЕМ СЛУЖЕБНЫЕ ФАЙЛЫ =====
+Disallow: /admin.php
 Disallow: /admin.html
 Disallow: /admin-api.php
-Disallow: /admin-config.php
-Disallow: /admin-password.php
-Disallow: /admin-password.example.php
-Disallow: /guides-config.php
-Disallow: /lootbar-config.php
-Disallow: /schedule-config.php
+Disallow: /index.php
+Disallow: /*-config.php
+Disallow: /admin-password*
 Disallow: /admin-changes.log
 
-# Запрещаем служебные папки
+# Запрещаем служебные папки (но не изображения!)
 Disallow: /backups/
-Disallow: /content/
 Disallow: /lib/
 Disallow: /docker/
 Disallow: /*.files/
 
-# Разрешаем изображения для всех ботов
+# Запрещаем исходные MD файлы (контент доступен через HTML)
+Disallow: /content/guides/
+Disallow: /content/schedule/
+Disallow: /*.md$
+
+# ===== ПРАВИЛА ДЛЯ ПОИСКОВЫХ БОТОВ =====
+
+# Google
+User-agent: Googlebot
+Allow: /
+Allow: /content/lootbar/
+Crawl-delay: 1
+
 User-agent: Googlebot-Image
 Allow: /
-Allow: /content/lootbar/*.png
-Allow: /content/lootbar/*.jpg
+Allow: /content/lootbar/
+
+# Яндекс
+User-agent: Yandex
+Allow: /
+Allow: /content/lootbar/
+Crawl-delay: 1
 
 User-agent: YandexImages
 Allow: /
-Allow: /content/lootbar/*.png
-Allow: /content/lootbar/*.jpg
+Allow: /content/lootbar/
 
-# Специальные правила для основных поисковиков
-User-agent: Googlebot
+# Другие
+User-agent: bingbot
 Allow: /
-Crawl-delay: 1
-
-User-agent: Yandex
-Allow: /
-Crawl-delay: 1
+Crawl-delay: 2
 
 User-agent: Mail.RU_Bot
 Allow: /
 Crawl-delay: 2
 
-User-agent: bingbot
+User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 1
+Crawl-delay: 2

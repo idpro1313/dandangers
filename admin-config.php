@@ -15,10 +15,8 @@ if (file_exists($passwordFile)) {
     ]));
 }
 
-// Разрешённые для редактирования HTML файлы
-$ALLOWED_FILES = [
-    'index.html'
-];
+// Разрешённые для редактирования HTML файлы (главная страница теперь в PHP)
+$ALLOWED_FILES = [];
 
 // Разрешённые для редактирования MD файлы (гайды)
 $ALLOWED_MD_FILES = [
