@@ -10,8 +10,8 @@
   
   <!-- О союзе -->
   <url>
-    <loc>https://dandangers.ru/main.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <loc>https://dandangers.ru/guide-soyuz-dangers.html</loc>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -24,13 +24,6 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- Таблица ивентов -->
-  <url>
-    <loc>https://dandangers.ru/tabl.html</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
   
   <!-- Старые гайды (теперь через guide-*.html) -->
   <url>
@@ -75,10 +68,10 @@
     <priority>0.7</priority>
   </url>
   
-  <!-- Библиотека гайдов (НОВОЕ) -->
+  <!-- Библиотека гайдов -->
   <url>
-    <loc>https://dandangers.ru/novoe.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <loc>https://dandangers.ru/guide-biblioteka.html</loc>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>

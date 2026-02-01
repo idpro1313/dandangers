@@ -17,14 +17,14 @@ if (file_exists($passwordFile)) {
 
 // Разрешённые для редактирования HTML файлы
 $ALLOWED_FILES = [
-    'index.html',
-    'main.html',
-    'tabl.html',
-    'novoe.html'
+    'index.html'
 ];
 
 // Разрешённые для редактирования MD файлы (гайды)
 $ALLOWED_MD_FILES = [
+    // О союзе и библиотека
+    'content/guides/soyuz-dangers.md' => 'О союзе [Dan]Dangers',
+    'content/guides/biblioteka.md' => 'Библиотека гайдов',
     // Новые гайды
     'content/guides/vvedenie.md' => 'Введение и стратегии',
     'content/guides/razvitie.md' => 'Развитие без доната',

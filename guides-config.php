@@ -5,6 +5,19 @@
  */
 
 $GUIDES = [
+    'soyuz-dangers' => [
+        'title' => 'Союз [Dan]Dangers — О нас | Tiles Survive Wiki',
+        'h1' => 'Союз [Dan]Dangers',
+        'description' => 'Союз [Dan]Dangers — активное сообщество игроков Tiles Survive на штате 174. Командная игра, обмен знаниями и взаимопомощь.',
+        'keywords' => 'dandangers, tiles survive союз, tiles survive альянс, штат 174, tiles survive сообщество, tiles survive alliance guide, tiles survive клан',
+        'og_title' => 'Союз [Dan]Dangers | Tiles Survive',
+        'og_description' => 'Активное сообщество игроков Tiles Survive на штате 174. Командная игра и взаимопомощь.',
+        'schema_headline' => 'Союз [Dan]Dangers — Сообщество Tiles Survive',
+        'prev' => null,
+        'next' => 'vvedenie',
+        'nav_title' => 'О союзе',
+        'is_about' => true
+    ],
     'vvedenie' => [
         'title' => 'Введение и основные стратегии — Tiles Survive Wiki',
         'h1' => 'Введение и основные стратегии',
@@ -13,7 +26,7 @@ $GUIDES = [
         'og_title' => 'Введение и основные стратегии — Tiles Survive',
         'og_description' => 'Что такое Tiles Survive, основные принципы игры, боевая мощь, разница F2P vs донат.',
         'schema_headline' => 'Введение и основные стратегии Tiles Survive',
-        'prev' => null,
+        'prev' => 'biblioteka',
         'next' => 'razvitie',
         'nav_title' => 'Введение'
     ],
