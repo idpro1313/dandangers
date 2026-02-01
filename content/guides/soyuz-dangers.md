@@ -29,5 +29,5 @@
 
 ## Контакты
 
-- **Telegram:** [Tiles Survive RU](https://t.me/tilessurviveru)
+- **Telegram:** [Dan Balan](https://t.me/digitalpersonage)
 - **RuTube:** [Канал союза](https://rutube.ru/channel/72144398/)
