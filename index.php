@@ -660,6 +660,65 @@ document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
     }
   });
 });
+
+// PWA Install Banner
+(function() {
+  // Проверяем: мобильное устройство, не в standalone режиме, не показывали раньше
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  var dismissed = localStorage.getItem('pwa-banner-dismissed');
+  
+  if (isMobile && !isStandalone && !dismissed) {
+    // Создаём баннер
+    var banner = document.createElement('div');
+    banner.id = 'pwa-install-banner';
+    banner.innerHTML = '<div class="pwa-content">' +
+      '<span class="pwa-icon">📱</span>' +
+      '<div class="pwa-text">' +
+        '<strong>Добавьте на главный экран</strong>' +
+        '<span>Быстрый доступ к гайдам без браузера</span>' +
+      '</div>' +
+      '<button class="pwa-close" aria-label="Закрыть">✕</button>' +
+    '</div>' +
+    '<div class="pwa-hint">' +
+      (navigator.userAgent.match(/iPhone|iPad|iPod/) 
+        ? 'Нажмите <strong>Поделиться</strong> ↗ → <strong>На экран «Домой»</strong>'
+        : 'Нажмите <strong>⋮</strong> → <strong>Добавить на главный экран</strong>') +
+    '</div>';
+    
+    // Стили
+    var style = document.createElement('style');
+    style.textContent = '#pwa-install-banner{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1a2332 0%,#0a0f1a 100%);border-top:2px solid #00d4aa;padding:12px 16px;z-index:9999;animation:slideUp .3s ease}' +
+      '@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}' +
+      '.pwa-content{display:flex;align-items:center;gap:12px}' +
+      '.pwa-icon{font-size:28px}' +
+      '.pwa-text{flex:1;line-height:1.3}' +
+      '.pwa-text strong{display:block;color:#00d4aa;font-size:14px}' +
+      '.pwa-text span{font-size:12px;color:#8892a6}' +
+      '.pwa-close{background:none;border:none;color:#8892a6;font-size:18px;padding:8px;cursor:pointer}' +
+      '.pwa-close:hover{color:#fff}' +
+      '.pwa-hint{margin-top:8px;font-size:12px;color:#8892a6;text-align:center}' +
+      '.pwa-hint strong{color:#fff}';
+    
+    document.head.appendChild(style);
+    document.body.appendChild(banner);
+    
+    // Закрытие баннера
+    banner.querySelector('.pwa-close').addEventListener('click', function() {
+      banner.style.animation = 'slideUp .3s ease reverse';
+      setTimeout(function() { banner.remove(); }, 300);
+      localStorage.setItem('pwa-banner-dismissed', '1');
+    });
+    
+    // Автоскрытие через 15 секунд
+    setTimeout(function() {
+      if (document.getElementById('pwa-install-banner')) {
+        banner.style.animation = 'slideUp .3s ease reverse';
+        setTimeout(function() { banner.remove(); }, 300);
+      }
+    }, 15000);
+  }
+})();
 </script>
 <?php
 }
