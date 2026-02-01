@@ -4,6 +4,10 @@
  * Обрабатывает ВСЕ страницы: главная, гайды, lootbar, расписание
  */
 
+// DEBUG: Раскомментируйте для отладки
+// error_log("INDEX.PHP: URI=" . $_SERVER['REQUEST_URI']);
+// die("DEBUG: REQUEST_URI=" . $_SERVER['REQUEST_URI'] . ", SCRIPT_FILENAME=" . $_SERVER['SCRIPT_FILENAME']);
+
 // Подключаем Parsedown
 require_once __DIR__ . '/lib/Parsedown.php';
 
