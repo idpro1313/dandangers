@@ -21,12 +21,6 @@ $ALLOWED_FILES = [
     'main.html',
     'daily.html',
     'tabl.html',
-    '17sovetov.html',
-    'bigguide.html',
-    'fullguide.html',
-    'heroes.html',
-    'lab.html',
-    'res.html',
     'lootbar.html',
     'lootbar-instruction.html',
     'novoe.html'
@@ -34,6 +28,7 @@ $ALLOWED_FILES = [
 
 // Разрешённые для редактирования MD файлы (гайды)
 $ALLOWED_MD_FILES = [
+    // Новые гайды
     'content/guides/vvedenie.md' => 'Введение и стратегии',
     'content/guides/razvitie.md' => 'Развитие без доната',
     'content/guides/zdaniya.md' => 'Здания и приоритеты',
@@ -51,7 +46,14 @@ $ALLOWED_MD_FILES = [
     'content/guides/cheklista.md' => 'Чек-лист достижений',
     'content/guides/glossariy.md' => 'Глоссарий терминов',
     'content/guides/tablicy.md' => 'Таблицы сравнения',
-    'content/guides/faq.md' => 'FAQ'
+    'content/guides/faq.md' => 'FAQ',
+    // Старые гайды
+    'content/guides/17sovetov.md' => '[Старый] 17 советов',
+    'content/guides/bigguide.md' => '[Старый] Для новичков',
+    'content/guides/fullguide.md' => '[Старый] Полный гайд',
+    'content/guides/heroes-old.md' => '[Старый] Герои',
+    'content/guides/lab-old.md' => '[Старый] Лаборатория',
+    'content/guides/res-old.md' => '[Старый] Ресурсы'
 ];
 
 // Директория с файлами сайта (относительно admin-api.php)

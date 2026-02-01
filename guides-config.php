@@ -219,16 +219,101 @@ $GUIDES = [
         'schema_headline' => 'FAQ Tiles Survive',
         'schema_type' => 'FAQPage', // Специальный тип Schema.org для FAQ
         'prev' => 'tablicy',
-        'next' => null,
+        'next' => '17sovetov',
         'nav_title' => 'FAQ'
+    ],
+    
+    // ===== СТАРЫЕ ГАЙДЫ =====
+    '17sovetov' => [
+        'title' => '17 ключевых советов — Tiles Survive Wiki',
+        'h1' => '17 ключевых советов',
+        'description' => '17 ключевых советов по Tiles Survive от опытных игроков. Как правильно тратить ресурсы, оптимизировать прокачку и побеждать в событиях.',
+        'keywords' => 'tiles survive советы, tiles survive tips, tiles survive гайд для новичков, как играть в tiles survive, tiles survive стратегия',
+        'og_title' => '17 ключевых советов — Tiles Survive',
+        'og_description' => 'Проверенные советы от опытных игроков. Оптимизация ресурсов, стратегия прокачки.',
+        'schema_headline' => '17 ключевых советов по Tiles Survive',
+        'prev' => 'faq',
+        'next' => 'bigguide',
+        'nav_title' => '17 советов',
+        'is_old' => true
+    ],
+    'bigguide' => [
+        'title' => 'Гайд для новичков — Tiles Survive Wiki',
+        'h1' => 'Гайд для новичков',
+        'description' => 'Полный гайд для новичков Tiles Survive. Основы развития базы, приоритеты построек, рост боевой мощи, игра в союзе и тактика Аркадии.',
+        'keywords' => 'tiles survive гайд для новичков, tiles survive как начать, tiles survive база, tiles survive постройки, tiles survive аркадия',
+        'og_title' => 'Гайд для новичков — Tiles Survive',
+        'og_description' => 'Полное руководство для начинающих игроков. Развитие базы, постройки, союз и Аркадия.',
+        'schema_headline' => 'Гайд для новичков Tiles Survive',
+        'prev' => '17sovetov',
+        'next' => 'fullguide',
+        'nav_title' => 'Для новичков',
+        'is_old' => true
+    ],
+    'fullguide' => [
+        'title' => 'Полный гайд по Tiles Survive — Wiki',
+        'h1' => 'Полный гайд по Tiles Survive',
+        'description' => 'Исчерпывающий гайд по Tiles Survive: стратегия без доната, VIP прокачка, Титан, герои, снаряжение шефа, тактика боя и защита Аркадии.',
+        'keywords' => 'tiles survive полный гайд, tiles survive без доната, tiles survive vip, tiles survive титан, tiles survive снаряжение',
+        'og_title' => 'Полный гайд по Tiles Survive',
+        'og_description' => 'Исчерпывающее руководство: стратегия без доната, VIP, Титан, снаряжение и PvP тактика.',
+        'schema_headline' => 'Полный гайд по Tiles Survive',
+        'prev' => 'bigguide',
+        'next' => 'heroes-old',
+        'nav_title' => 'Полный гайд',
+        'is_old' => true
+    ],
+    'heroes-old' => [
+        'title' => 'Герои и снаряжение (старый гайд) — Tiles Survive Wiki',
+        'h1' => 'Герои и снаряжение',
+        'description' => 'Полный гайд по героям Tiles Survive: рейтинг лучших героев, навыки, снаряжение, оптимальные сборки отрядов. Бэка, Розе, Мэди, Никола.',
+        'keywords' => 'tiles survive герои, tiles survive лучшие герои, tiles survive бэка, tiles survive розе, tiles survive снаряжение героев',
+        'og_title' => 'Герои Tiles Survive — Гайд',
+        'og_description' => 'Рейтинг лучших героев, навыки, снаряжение и оптимальные сборки отрядов.',
+        'schema_headline' => 'Герои Tiles Survive — Лучшие герои и сборки',
+        'prev' => 'fullguide',
+        'next' => 'lab-old',
+        'nav_title' => 'Герои (старый)',
+        'is_old' => true
+    ],
+    'lab-old' => [
+        'title' => 'Лаборатория (старый гайд) — Tiles Survive Wiki',
+        'h1' => 'Лаборатория',
+        'description' => 'Гайд по Лаборатории Tiles Survive: приоритеты прокачки наук, ветки Развитие, Экономика, Герои, Дуэль Союза. Оптимальная стратегия исследований.',
+        'keywords' => 'tiles survive лаборатория, tiles survive науки, tiles survive исследования, tiles survive прокачка наук',
+        'og_title' => 'Лаборатория Tiles Survive',
+        'og_description' => 'Какие науки качать в первую очередь. Оптимальная стратегия исследований.',
+        'schema_headline' => 'Лаборатория Tiles Survive — Приоритеты прокачки',
+        'prev' => 'heroes-old',
+        'next' => 'res-old',
+        'nav_title' => 'Лаборатория (старый)',
+        'is_old' => true
+    ],
+    'res-old' => [
+        'title' => 'Ресурсы (старый гайд) — Tiles Survive Wiki',
+        'h1' => 'Ресурсы',
+        'description' => 'Гайд по ресурсам Tiles Survive: производство, быстрый сбор, бонусы скорости. Как эффективно фармить древесину, металл и еду.',
+        'keywords' => 'tiles survive ресурсы, tiles survive фарм, tiles survive сбор ресурсов, tiles survive древесина, tiles survive производство',
+        'og_title' => 'Ресурсы Tiles Survive',
+        'og_description' => 'Эффективный сбор и производство ресурсов. Бонусы скорости и тактика фарма.',
+        'schema_headline' => 'Ресурсы Tiles Survive — Гайд по сбору и фарму',
+        'prev' => 'lab-old',
+        'next' => null,
+        'nav_title' => 'Ресурсы (старый)',
+        'is_old' => true
     ]
 ];
 
-// Порядок гайдов для навигации
+// Порядок новых гайдов для навигации
 $GUIDE_ORDER = [
     'vvedenie', 'razvitie', 'zdaniya', 'laboratoriya', 'geroi', 'snariazhenie',
     'resursy', 'sobytiya', 'soyuz', 'mehaniki', 'start', 'vip',
     'raspisanie', 'oshibki', 'cheklista', 'glossariy', 'tablicy', 'faq'
+];
+
+// Порядок старых гайдов
+$OLD_GUIDE_ORDER = [
+    '17sovetov', 'bigguide', 'fullguide', 'heroes-old', 'lab-old', 'res-old'
 ];
 
 /**

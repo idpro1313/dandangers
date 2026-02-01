@@ -120,7 +120,7 @@ $canonical = 'https://dandangers.ru/guide-' . $page . '.html';
       <li><a href="main.html">О союзе</a></li>
       <li><a href="daily.html">Расписание</a></li>
       <li class="nav-dropdown">
-        <a href="novoe.html" class="dropdown-toggle active">Библиотека ▾</a>
+        <a href="novoe.html" class="dropdown-toggle<?php if(!isset($config['is_old']) || !$config['is_old']) echo ' active'; ?>">Библиотека ▾</a>
         <ul class="dropdown-menu">
           <li><a href="guide-vvedenie.html"<?php if($page==='vvedenie') echo ' class="active"'; ?>>Введение</a></li>
           <li><a href="guide-razvitie.html"<?php if($page==='razvitie') echo ' class="active"'; ?>>Развитие F2P</a></li>
@@ -135,14 +135,14 @@ $canonical = 'https://dandangers.ru/guide-' . $page . '.html';
         </ul>
       </li>
       <li class="nav-dropdown">
-        <a href="#" class="dropdown-toggle">Старые ▾</a>
+        <a href="#" class="dropdown-toggle<?php if(isset($config['is_old']) && $config['is_old']) echo ' active'; ?>">Старые ▾</a>
         <ul class="dropdown-menu">
-          <li><a href="17sovetov.html">17 советов</a></li>
-          <li><a href="bigguide.html">Для новичков</a></li>
-          <li><a href="fullguide.html">Полный гайд</a></li>
-          <li><a href="heroes.html">Герои</a></li>
-          <li><a href="lab.html">Лаборатория</a></li>
-          <li><a href="res.html">Ресурсы</a></li>
+          <li><a href="guide-17sovetov.html"<?php if($page==='17sovetov') echo ' class="active"'; ?>>17 советов</a></li>
+          <li><a href="guide-bigguide.html"<?php if($page==='bigguide') echo ' class="active"'; ?>>Для новичков</a></li>
+          <li><a href="guide-fullguide.html"<?php if($page==='fullguide') echo ' class="active"'; ?>>Полный гайд</a></li>
+          <li><a href="guide-heroes-old.html"<?php if($page==='heroes-old') echo ' class="active"'; ?>>Герои</a></li>
+          <li><a href="guide-lab-old.html"<?php if($page==='lab-old') echo ' class="active"'; ?>>Лаборатория</a></li>
+          <li><a href="guide-res-old.html"<?php if($page==='res-old') echo ' class="active"'; ?>>Ресурсы</a></li>
         </ul>
       </li>
       <li><a href="tabl.html">Таблица</a></li>
