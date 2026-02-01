@@ -85,6 +85,9 @@ function renderHome() {
   
   <link rel="icon" type="image/jpeg" href="/dangers.jpg">
   <link rel="apple-touch-icon" href="/dangers.jpg">
+  <meta name="theme-color" content="#00d4aa">
+  <meta name="msapplication-TileColor" content="#00d4aa">
+  <meta name="format-detection" content="telephone=no">
   <link rel="stylesheet" href="/modern-styles.css">
   
   <script type="text/javascript">
@@ -226,14 +229,14 @@ function renderHome() {
       <div class="nav-card-desc">Расписание событий по дням недели</div>
     </div>
   </a>
-  <a href="https://docs.google.com/spreadsheets/d/14YBxtEsrZhuhFp_ldXRtWBzs50IiMq4lZTouZr3tYeA/edit?gid=0#gid=0" class="nav-card" target="_blank">
+  <a href="https://docs.google.com/spreadsheets/d/14YBxtEsrZhuhFp_ldXRtWBzs50IiMq4lZTouZr3tYeA/edit?gid=0#gid=0" class="nav-card" target="_blank" rel="noopener noreferrer">
     <span class="nav-card-icon">📊</span>
     <div class="nav-card-content">
       <div class="nav-card-title">Статы героев</div>
       <div class="nav-card-desc">Таблица статов героев и отрядов</div>
     </div>
   </a>
-  <a href="https://docs.google.com/spreadsheets/d/1eKqvXaFjlWc4EWBFxg1dkA-yKhqyCIuMm2kIdqbET98/edit?gid=116685073#gid=116685073" class="nav-card" target="_blank">
+  <a href="https://docs.google.com/spreadsheets/d/1eKqvXaFjlWc4EWBFxg1dkA-yKhqyCIuMm2kIdqbET98/edit?gid=116685073#gid=116685073" class="nav-card" target="_blank" rel="noopener noreferrer">
     <span class="nav-card-icon">🌊</span>
     <div class="nav-card-content">
       <div class="nav-card-title">Морской сезон</div>
@@ -251,7 +254,7 @@ function renderHome() {
       <div class="nav-card-desc">Видеогайды на RuTube</div>
     </div>
   </a>
-  <a href="https://vkvideo.ru/@club233882791" class="nav-card" target="_blank">
+  <a href="https://vkvideo.ru/@club233882791" class="nav-card" target="_blank" rel="noopener noreferrer">
     <span class="nav-card-icon">📹</span>
     <div class="nav-card-content">
       <div class="nav-card-title">VK Video</div>
@@ -265,7 +268,7 @@ function renderHome() {
       <div class="nav-card-desc">Телеграм-сообщество</div>
     </div>
   </a>
-  <a href="https://t.me/TLSSURVIVE" class="nav-card" target="_blank">
+  <a href="https://t.me/TLSSURVIVE" class="nav-card" target="_blank" rel="noopener noreferrer">
     <span class="nav-card-icon">📢</span>
     <div class="nav-card-content">
       <div class="nav-card-title">TLS Survive</div>
@@ -696,6 +699,10 @@ function renderPage($data) {
 <?php endif; ?>
   
   <link rel="icon" type="image/jpeg" href="/dangers.jpg">
+  <link rel="apple-touch-icon" href="/dangers.jpg">
+  <meta name="theme-color" content="#00d4aa">
+  <meta name="msapplication-TileColor" content="#00d4aa">
+  <meta name="format-detection" content="telephone=no">
   <link rel="stylesheet" href="/modern-styles.css">
   
 <?php if ($type === 'lootbar'): ?>
