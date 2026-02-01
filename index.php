@@ -10,8 +10,11 @@ if (isset($_GET['debug'])) {
     // Продолжаем выполнение чтобы увидеть вывод из функций
 }
 
-// Подключаем Parsedown
+// Подключаем библиотеки и конфиги (в глобальной области!)
 require_once __DIR__ . '/lib/Parsedown.php';
+require_once __DIR__ . '/guides-config.php';
+require_once __DIR__ . '/lootbar-config.php';
+require_once __DIR__ . '/schedule-config.php';
 
 // Получаем URI без query string
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -329,13 +332,8 @@ function renderGuide($page) {
     // DEBUG
     if (isset($_GET['debug'])) {
         echo "<pre>renderGuide('$page') started\n";
+        echo "page='$page', guideExists=" . (guideExists($page) ? 'YES' : 'NO') . "\n";
     }
-    
-    require_once __DIR__ . '/guides-config.php';
-    
-    if (isset($_GET['debug'])) echo "guides-config loaded\n";
-    
-    if (isset($_GET['debug'])) echo "page='$page', guideExists=" . (guideExists($page) ? 'YES' : 'NO') . "\n";
     
     if (!$page || !guideExists($page)) {
         if (isset($_GET['debug'])) echo "CALLING show404()\n";
@@ -520,7 +518,7 @@ function renderLootbar($page) {
 // ФУНКЦИЯ: Рендеринг расписания
 // ============================================================
 function renderSchedule($page) {
-    require_once __DIR__ . '/schedule-config.php';
+    // Конфиг уже загружен в начале файла
     
     $page = $page ?: 'daily';
     
