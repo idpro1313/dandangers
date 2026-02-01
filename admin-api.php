@@ -50,6 +50,22 @@ if (!isset($ALLOWED_FILES) || !is_array($ALLOWED_FILES)) {
     $ALLOWED_FILES = [];
 }
 
+// Убеждаемся что $ALLOWED_MD_FILES доступна
+if (!isset($ALLOWED_MD_FILES) || !is_array($ALLOWED_MD_FILES)) {
+    $ALLOWED_MD_FILES = [];
+}
+
+// Функция проверки - это MD файл?
+function isMdFile($file) {
+    return pathinfo($file, PATHINFO_EXTENSION) === 'md';
+}
+
+// Функция проверки разрешённости файла (HTML или MD)
+function isFileAllowed($file) {
+    global $ALLOWED_FILES, $ALLOWED_MD_FILES;
+    return in_array($file, $ALLOWED_FILES) || array_key_exists($file, $ALLOWED_MD_FILES);
+}
+
 // CORS для локальной разработки (уберите в продакшене если не нужно)
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -115,19 +131,36 @@ switch ($action) {
         }
         
         $files = [];
+        $mdFiles = [];
         
+        // HTML файлы
         foreach ($ALLOWED_FILES as $file) {
             $path = SITE_ROOT . $file;
             if (file_exists($path)) {
                 $files[] = [
                     'name' => $file,
                     'modified' => date('Y-m-d H:i:s', filemtime($path)),
-                    'size' => filesize($path)
+                    'size' => filesize($path),
+                    'type' => 'html'
                 ];
             }
         }
         
-        echo json_encode(['success' => true, 'files' => $files]);
+        // MD файлы (гайды)
+        foreach ($ALLOWED_MD_FILES as $file => $title) {
+            $path = SITE_ROOT . $file;
+            if (file_exists($path)) {
+                $mdFiles[] = [
+                    'name' => $file,
+                    'title' => $title,
+                    'modified' => date('Y-m-d H:i:s', filemtime($path)),
+                    'size' => filesize($path),
+                    'type' => 'md'
+                ];
+            }
+        }
+        
+        echo json_encode(['success' => true, 'files' => $files, 'mdFiles' => $mdFiles]);
         break;
         
     case 'get_content':
@@ -139,7 +172,7 @@ switch ($action) {
         
         $file = $_GET['file'] ?? '';
         
-        if (!in_array($file, $ALLOWED_FILES)) {
+        if (!isFileAllowed($file)) {
             echo json_encode(['success' => false, 'error' => 'Файл не разрешён для редактирования']);
             break;
         }
@@ -153,7 +186,20 @@ switch ($action) {
         
         $content = file_get_contents($path);
         
-        // Извлекаем содержимое content-wrapper
+        // Для MD файлов - возвращаем весь контент как есть
+        if (isMdFile($file)) {
+            logAction('READ', $file);
+            echo json_encode([
+                'success' => true, 
+                'content' => $content,
+                'fullContent' => $content,
+                'file' => $file,
+                'type' => 'md'
+            ]);
+            break;
+        }
+        
+        // Для HTML файлов - извлекаем содержимое content-wrapper
         $editableContent = '';
         
         // Ищем content-wrapper и извлекаем его содержимое
@@ -187,7 +233,8 @@ switch ($action) {
             'success' => true, 
             'content' => $editableContent,
             'fullContent' => $content,
-            'file' => $file
+            'file' => $file,
+            'type' => 'html'
         ]);
         break;
         
@@ -201,9 +248,7 @@ switch ($action) {
         $file = $_POST['file'] ?? '';
         $newContent = $_POST['content'] ?? '';
         
-        global $ALLOWED_FILES;
-        
-        if (!in_array($file, $ALLOWED_FILES)) {
+        if (!isFileAllowed($file)) {
             echo json_encode(['success' => false, 'error' => 'Файл не разрешён для редактирования']);
             break;
         }
@@ -223,10 +268,27 @@ switch ($action) {
         if (!is_dir($backupPath)) {
             mkdir($backupPath, 0755, true);
         }
-        $backupFile = $backupPath . $file . '.' . date('Y-m-d_H-i-s') . '.bak';
+        // Для MD файлов создаём путь к бэкапу с подпапкой
+        $backupFileName = str_replace('/', '_', $file) . '.' . date('Y-m-d_H-i-s') . '.bak';
+        $backupFile = $backupPath . $backupFileName;
         file_put_contents($backupFile, $originalContent);
         
-        // Заменяем содержимое content-wrapper
+        // Для MD файлов - сохраняем контент напрямую
+        if (isMdFile($file)) {
+            if (file_put_contents($path, $newContent, LOCK_EX)) {
+                logAction('SAVE', $file);
+                echo json_encode([
+                    'success' => true, 
+                    'message' => 'Файл сохранён',
+                    'backup' => basename($backupFile)
+                ]);
+            } else {
+                echo json_encode(['success' => false, 'error' => 'Ошибка записи файла']);
+            }
+            break;
+        }
+        
+        // Для HTML файлов - заменяем содержимое content-wrapper
         $updatedContent = $originalContent;
         
         $startMarker = '<div class="content-wrapper">';
@@ -305,9 +367,14 @@ switch ($action) {
         }
         
         // Определяем оригинальный файл из имени бэкапа
-        $originalFile = preg_replace('/\.\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\.bak$/', '', basename($backupFile));
+        // Формат: filename.ext.YYYY-MM-DD_HH-ii-ss.bak или content_guides_name.md.YYYY-MM-DD_HH-ii-ss.bak
+        $baseName = basename($backupFile);
+        $originalFile = preg_replace('/\.\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\.bak$/', '', $baseName);
         
-        if (!in_array($originalFile, $ALLOWED_FILES)) {
+        // Восстанавливаем путь для MD файлов (content_guides_name.md -> content/guides/name.md)
+        $originalFile = str_replace('_', '/', $originalFile);
+        
+        if (!isFileAllowed($originalFile)) {
             echo json_encode(['success' => false, 'error' => 'Файл не разрешён']);
             break;
         }

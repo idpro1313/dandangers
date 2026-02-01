@@ -15,7 +15,7 @@ if (file_exists($passwordFile)) {
     ]));
 }
 
-// Разрешённые для редактирования файлы
+// Разрешённые для редактирования HTML файлы
 $ALLOWED_FILES = [
     'index.html',
     'main.html',
@@ -29,25 +29,29 @@ $ALLOWED_FILES = [
     'res.html',
     'lootbar.html',
     'lootbar-instruction.html',
-    'novoe.html',
-    'guide-vvedenie.html',
-    'guide-razvitie.html',
-    'guide-zdaniya.html',
-    'guide-laboratoriya.html',
-    'guide-geroi.html',
-    'guide-snariazhenie.html',
-    'guide-resursy.html',
-    'guide-sobytiya.html',
-    'guide-soyuz.html',
-    'guide-mehaniki.html',
-    'guide-start.html',
-    'guide-vip.html',
-    'guide-raspisanie.html',
-    'guide-oshibki.html',
-    'guide-cheklista.html',
-    'guide-glossariy.html',
-    'guide-tablicy.html',
-    'guide-faq.html'
+    'novoe.html'
+];
+
+// Разрешённые для редактирования MD файлы (гайды)
+$ALLOWED_MD_FILES = [
+    'content/guides/vvedenie.md' => 'Введение и стратегии',
+    'content/guides/razvitie.md' => 'Развитие без доната',
+    'content/guides/zdaniya.md' => 'Здания и приоритеты',
+    'content/guides/laboratoriya.md' => 'Лаборатория и науки',
+    'content/guides/geroi.md' => 'Герои и боевые группы',
+    'content/guides/snariazhenie.md' => 'Снаряжение и артефакты',
+    'content/guides/resursy.md' => 'Ресурсы и фарм',
+    'content/guides/sobytiya.md' => 'События и оптимизация',
+    'content/guides/soyuz.md' => 'Союз и карта',
+    'content/guides/mehaniki.md' => 'Специальные механики',
+    'content/guides/start.md' => 'Быстрый старт',
+    'content/guides/vip.md' => 'VIP система',
+    'content/guides/raspisanie.md' => 'Календарь и расписание',
+    'content/guides/oshibki.md' => 'Частые ошибки',
+    'content/guides/cheklista.md' => 'Чек-лист достижений',
+    'content/guides/glossariy.md' => 'Глоссарий терминов',
+    'content/guides/tablicy.md' => 'Таблицы сравнения',
+    'content/guides/faq.md' => 'FAQ'
 ];
 
 // Директория с файлами сайта (относительно admin-api.php)
