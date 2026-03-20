@@ -18,6 +18,10 @@ function dandangers_request_path() {
 }
 
 $uri = dandangers_request_path();
+// Прямой заход на /index.php (health-check, curl) — та же главная, что и /
+if ($uri === '/index.php') {
+    $uri = '/';
+}
 
 // Корневые статические файлы: если nginx отдаёт всё в PHP без отдельных location — иначе 404
 $rootStatic = [
