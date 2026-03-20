@@ -1,6 +1,6 @@
 # Запуск dandangers.ru за Traefik ([webserver](https://github.com/idpro1313/webserver))
 
-Caddy **не используется**: TLS и маршруты выдаёт **Traefik**, контейнеры сайта только **nginx + PHP-FPM** и подключаются к внешней сети `web`.
+Caddy **не используется**: TLS и маршруты выдаёт **Traefik**. Сайт — **один контейнер** (nginx + PHP-FPM внутри, см. `Dockerfile` и `supervisord.conf`), подключение к внешней сети `web`.
 
 ## Требования на сервере
 
@@ -22,6 +22,7 @@ nano .env   # SITE_ROOT=/opt/dandangers и при необходимости и�
 Проверьте в `.env`:
 
 - **`SITE_ROOT`** — абсолютный путь к корню репозитория (где лежат `index.php`, `content/`, `docker/`).
+- **`WEB_IMAGE_NAME`** — тег локально собранного образа (по умолчанию `dandangers-web:latest`). Отдельного сервиса `php` нет.
 - **`TRAEFIK_RULE`** — домены с обратными кавычками: `` Host(`dandangers.ru`) || Host(`www.dandangers.ru`) ``
 - **`TRAEFIK_ENTRYPOINT_HTTPS`** — как в вашем Traefik (часто `websecure`).
 - **`TRAEFIK_CERT_RESOLVER`** — имя resolver в Traefik (в шаблоне webserver обычно `le`).
@@ -57,7 +58,7 @@ docker compose --env-file .env up -d
    */15 * * * * SITE_ROOT=/opt/dandangers /opt/dandangers/scripts/update-site.sh >> /var/log/dandangers-update.log 2>&1
    ```
 
-4. Скрипт **по умолчанию** после `git pull` выполняет **`docker compose restart web php`**, чтобы подхватить новый `nginx.conf` и код PHP (без перезапуска nginx внутри контейнера старый конфиг остаётся в памяти). Нужны файлы `docker/docker-compose.yml` и **`docker/.env`**.
+4. Скрипт **по умолчанию** после `git pull` выполняет **`docker compose restart web`**, чтобы подхватить новый `nginx.conf` и код PHP (без перезапуска nginx внутри контейнера старый конфиг остаётся в памяти). Нужны файлы `docker/docker-compose.yml` и **`docker/.env`**.
 
    Чтобы **не** перезапускать контейнеры (только pull):
 
@@ -80,24 +81,38 @@ docker compose --env-file .env up -d
 
 4. Удалите старый `crontab` для контейнера updater, добавьте cron на `scripts/update-site.sh`.
 
+### Миграция с двух контейнеров (отдельные `web` и `php`)
+
+Если раньше были два сервиса, после `git pull` с новым `docker-compose.yml`:
+
+```bash
+cd /opt/dandangers/docker   # ваш путь
+docker compose --env-file .env down
+docker compose --env-file .env build --no-cache
+docker compose --env-file .env up -d
+```
+
+Старый контейнер `php` исчезнет (`--remove-orphans` при необходимости). В `.env` уберите `PHP_CONTAINER_NAME`, при необходимости задайте `WEB_IMAGE_NAME`.
+
 ## Файлы
 
 | Файл | Назначение |
 |------|------------|
-| `docker/docker-compose.yml` | nginx + php, labels Traefik |
+| `docker/docker-compose.yml` | один сервис `web` (nginx+PHP), labels Traefik |
 | `docker/env.example` | шаблон `.env` |
 | `docker/nginx.conf` | nginx |
-| `scripts/update-site.sh` | `git pull` + права + перезапуск контейнеров |
-| `docker/update.sh` | полное обновление Docker: `pull`, `build --no-cache` (если есть build), `up --force-recreate` |
+| `scripts/update-site.sh` | `git pull` + права + `restart web` |
+| `docker/update.sh` | пересборка образа без кэша и пересоздание контейнера (`build --no-cache`, `up --force-recreate`, `nginx -t`) |
 | `docker/Caddyfile` | **устарел** (оставлен только как напоминание; Caddy не используется) |
 
-### Полная пересборка контейнеров без кэша (вручную)
+### Полная пересборка образа без кэша (вручную)
 
-После правок в `docker-compose` или когда нужно заново скачать образы и пересоздать контейнеры:
+После правок в `Dockerfile`, `nginx.conf` или `supervisord.conf`:
 
 ```bash
-cd /opt/webserver/sites/dandangers/docker
+cd /opt/dandangers/docker   # ваш путь
+chmod +x update.sh
 ./update.sh
 ```
 
-Не делает `git pull` — только Docker. Код сайта на диске подхватывается из примонтированного `SITE_ROOT`.
+Не делает `git pull` — только сборка и Docker. Код сайта на диске подхватывается из примонтированного `SITE_ROOT`.
