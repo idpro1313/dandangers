@@ -2,7 +2,7 @@
 #
 # Обновление кода с GitHub (git pull) и применение изменений в Docker.
 #
-# SITE_ROOT — корень репозитория (по умолчанию каталог над scripts/)
+# SITE_ROOT — корень сайта / папка проекта (по умолчанию каталог над scripts/)
 # GIT_REMOTE, GIT_BRANCH — по умолчанию origin, main
 #
 # После pull по умолчанию: docker compose restart web (один контейнер nginx+PHP).

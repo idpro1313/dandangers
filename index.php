@@ -17,11 +17,17 @@ function dandangers_request_path() {
     return $p;
 }
 
-$uri = dandangers_request_path();
-// Прямой заход на /index.php (health-check, curl) — та же главная, что и /
-if ($uri === '/index.php') {
-    $uri = '/';
+/** Нормализация пути: /index.php, /Index.php, /index.php/ → главная */
+function dandangers_normalize_uri_path($uri) {
+    $u = str_replace('\\', '/', (string) $uri);
+    $u = rtrim($u, '/') ?: '/';
+    if (strcasecmp($u, '/index.php') === 0) {
+        return '/';
+    }
+    return $uri;
 }
+
+$uri = dandangers_normalize_uri_path(dandangers_request_path());
 
 // Корневые статические файлы: если nginx отдаёт всё в PHP без отдельных location — иначе 404
 $rootStatic = [

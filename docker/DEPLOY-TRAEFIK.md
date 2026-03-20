@@ -11,17 +11,17 @@ Caddy **не используется**: TLS и маршруты выдаёт **
 ## Установка
 
 ```bash
-# Пример: код в /opt/dandangers
-cd /opt
-git clone https://github.com/idpro1313/dandangers.git dandangers
+# Пример: клон рядом с другими сайтами (как в idpro1313/webserver)
+cd /opt/webserver/sites
+git clone https://github.com/idpro1313/dandangers.git
 cd dandangers/docker
 cp env.example .env
-nano .env   # SITE_ROOT=/opt/dandangers и при необходимости имена контейнеров / TRAEFIK_*
+nano .env   # SITE_ROOT=/opt/webserver/sites/dandangers и при необходимости TRAEFIK_*
 ```
 
 Проверьте в `.env`:
 
-- **`SITE_ROOT`** — абсолютный путь к корню репозитория (где лежат `index.php`, `content/`, `docker/`).
+- **`SITE_ROOT`** — абсолютный путь к **корню сайта / папке проекта** на диске (где лежат `index.php`, `content/`, `docker/`). Это может быть каталог после `git clone`, rsync или копирования файлов — для Docker это просто каталог, который монтируется в контейнер.
 - **`WEB_IMAGE_NAME`** — тег локально собранного образа (по умолчанию `dandangers-web:latest`). Отдельного сервиса `php` нет.
 - **`TRAEFIK_RULE`** — домены с обратными кавычками: `` Host(`dandangers.ru`) || Host(`www.dandangers.ru`) ``
 - **`TRAEFIK_ENTRYPOINT_HTTPS`** — как в вашем Traefik (часто `websecure`).
@@ -30,7 +30,7 @@ nano .env   # SITE_ROOT=/opt/dandangers и при необходимости и�
 Запуск:
 
 ```bash
-cd /opt/dandangers/docker
+cd /opt/webserver/sites/dandangers/docker
 docker compose --env-file .env up -d
 ```
 
@@ -47,7 +47,7 @@ docker compose --env-file .env up -d
 1. Сделайте скрипт исполняемым:
 
    ```bash
-   chmod +x /opt/dandangers/scripts/update-site.sh
+   chmod +x /opt/webserver/sites/dandangers/scripts/update-site.sh
    ```
 
 2. Скрипт делает только **`git pull`** (без commit/push). Репозиторий на сервере должен быть клоном с GitHub с **read** доступом (обычно публичный clone достаточно). Если на сервере есть незакоммиченные правки, `git pull` может завершиться с ошибкой — тогда разберите вручную или сделайте `git stash` / `git reset --hard` (осторожно).
@@ -55,7 +55,7 @@ docker compose --env-file .env up -d
 3. Пример **crontab** (каждые 15 минут):
 
    ```cron
-   */15 * * * * SITE_ROOT=/opt/dandangers /opt/dandangers/scripts/update-site.sh >> /var/log/dandangers-update.log 2>&1
+   */15 * * * * SITE_ROOT=/opt/webserver/sites/dandangers /opt/webserver/sites/dandangers/scripts/update-site.sh >> /var/log/dandangers-update.log 2>&1
    ```
 
 4. Скрипт **по умолчанию** после `git pull` выполняет **`docker compose restart web`**, чтобы подхватить новый `nginx.conf` и код PHP (без перезапуска nginx внутри контейнера старый конфиг остаётся в памяти). Нужны файлы `docker/docker-compose.yml` и **`docker/.env`**.
@@ -86,7 +86,7 @@ docker compose --env-file .env up -d
 Если раньше были два сервиса, после `git pull` с новым `docker-compose.yml`:
 
 ```bash
-cd /opt/dandangers/docker   # ваш путь
+cd /opt/webserver/sites/dandangers/docker
 docker compose --env-file .env down
 docker compose --env-file .env build --no-cache
 docker compose --env-file .env up -d
@@ -110,9 +110,9 @@ docker compose --env-file .env up -d
 После правок в `Dockerfile`, `nginx.conf` или `supervisord.conf`:
 
 ```bash
-cd /opt/dandangers/docker   # ваш путь
+cd /opt/webserver/sites/dandangers/docker
 chmod +x update.sh
 ./update.sh
 ```
 
-Не делает `git pull` — только сборка и Docker. Код сайта на диске подхватывается из примонтированного `SITE_ROOT`.
+Не делает `git pull` — только сборка и Docker. Файлы сайта в примонтированной папке `SITE_ROOT` на хосте сразу видны в контейнере (отдельное копирование при старте не выполняется).
