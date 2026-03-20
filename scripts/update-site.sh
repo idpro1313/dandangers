@@ -30,7 +30,7 @@ chmod -R 755 "$SITE_ROOT/backups" 2>/dev/null || true
 if [ "${SKIP_DOCKER_RESTART:-0}" != "1" ] && [ -f "$SITE_ROOT/docker/docker-compose.yml" ] && [ -f "$SITE_ROOT/docker/.env" ]; then
   log "docker compose restart web (применение nginx.conf и PHP-кода)"
   if (cd "$SITE_ROOT/docker" && docker compose --env-file .env restart web); then
-    log "контейнеры перезапущены"
+    log "контейнер web перезапущен"
   else
     log "ВНИМАНИЕ: docker compose restart не выполнен (проверьте docker, путь к .env, имя проекта)"
   fi

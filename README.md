@@ -9,9 +9,9 @@
 
 Кратко:
 
-1. `docker/network create web` (если ещё нет).
+1. `docker network create web` (если ещё нет).
 2. `cd docker && cp env.example .env` — задать `SITE_ROOT`, домены в `TRAEFIK_RULE`.
-3. `docker compose --env-file .env up -d`
+3. `cd docker && docker compose --env-file .env up -d` (первый запуск соберёт образ из `Dockerfile`).
 4. Автообновление кода: **cron** → `scripts/update-site.sh` (см. DEPLOY-TRAEFIK.md).
 
 Caddy в проекте **не используется**.
