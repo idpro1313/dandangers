@@ -1,4 +1,2 @@
-dandangers.ru {
-	reverse_proxy static_web:80
-	encode gzip zstd
-}
+# Устарело: сайт обслуживается за Traefik (см. DEPLOY-TRAEFIK.md).
+# Caddy не используется.

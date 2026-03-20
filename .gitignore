@@ -1,3 +1,6 @@
+# Docker / сервер
+docker/.env
+
 # Конфиденциальные данные
 admin-password.php
 admin-changes.log
