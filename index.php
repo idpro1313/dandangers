@@ -83,9 +83,10 @@ function renderHome() {
   {"@context":"https://schema.org","@type":"CollectionPage","name":"Библиотека гайдов Tiles Survive","description":"Полная коллекция из 18 подробных гайдов","url":"https://dandangers.ru/","mainEntity":{"@type":"ItemList","numberOfItems":18,"itemListElement":[{"@type":"ListItem","position":1,"name":"Введение","url":"https://dandangers.ru/guide-vvedenie.html"},{"@type":"ListItem","position":2,"name":"Развитие","url":"https://dandangers.ru/guide-razvitie.html"},{"@type":"ListItem","position":3,"name":"Здания","url":"https://dandangers.ru/guide-zdaniya.html"},{"@type":"ListItem","position":4,"name":"Лаборатория","url":"https://dandangers.ru/guide-laboratoriya.html"},{"@type":"ListItem","position":5,"name":"Герои","url":"https://dandangers.ru/guide-geroi.html"},{"@type":"ListItem","position":6,"name":"Снаряжение","url":"https://dandangers.ru/guide-snariazhenie.html"},{"@type":"ListItem","position":7,"name":"Ресурсы","url":"https://dandangers.ru/guide-resursy.html"},{"@type":"ListItem","position":8,"name":"События","url":"https://dandangers.ru/guide-sobytiya.html"},{"@type":"ListItem","position":9,"name":"Союз","url":"https://dandangers.ru/guide-soyuz.html"},{"@type":"ListItem","position":10,"name":"Механики","url":"https://dandangers.ru/guide-mehaniki.html"},{"@type":"ListItem","position":11,"name":"Быстрый старт","url":"https://dandangers.ru/guide-start.html"},{"@type":"ListItem","position":12,"name":"VIP","url":"https://dandangers.ru/guide-vip.html"},{"@type":"ListItem","position":13,"name":"Расписание","url":"https://dandangers.ru/guide-raspisanie.html"},{"@type":"ListItem","position":14,"name":"Ошибки","url":"https://dandangers.ru/guide-oshibki.html"},{"@type":"ListItem","position":15,"name":"Чек-лист","url":"https://dandangers.ru/guide-cheklista.html"},{"@type":"ListItem","position":16,"name":"Глоссарий","url":"https://dandangers.ru/guide-glossariy.html"},{"@type":"ListItem","position":17,"name":"Таблицы","url":"https://dandangers.ru/guide-tablicy.html"},{"@type":"ListItem","position":18,"name":"FAQ","url":"https://dandangers.ru/guide-faq.html"}]}}
   </script>
   
-  <link rel="icon" type="image/jpeg" href="/dangers.jpg">
-  <link rel="apple-touch-icon" href="/dangers.jpg">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/jpeg" href="https://dandangers.ru/dangers.jpg">
+  <link rel="apple-touch-icon" href="https://dandangers.ru/dangers.jpg">
+  <link rel="manifest" href="https://dandangers.ru/manifest.json">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="theme-color" content="#00d4aa">
   <meta name="msapplication-TileColor" content="#00d4aa">
   <meta name="format-detection" content="telephone=no">
@@ -305,7 +306,7 @@ function show404() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>404 — Страница не найдена | Tiles Survive Wiki</title>
-    <link rel="icon" type="image/jpeg" href="/dangers.jpg">
+    <link rel="icon" type="image/jpeg" href="https://dandangers.ru/dangers.jpg">
     <link rel="stylesheet" href="/modern-styles.css">
 </head>
 <body>
@@ -761,9 +762,10 @@ function renderPage($data) {
   <script type="application/ld+json"><?= $breadcrumbJson ?></script>
 <?php endif; ?>
   
-  <link rel="icon" type="image/jpeg" href="/dangers.jpg">
-  <link rel="apple-touch-icon" href="/dangers.jpg">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/jpeg" href="https://dandangers.ru/dangers.jpg">
+  <link rel="apple-touch-icon" href="https://dandangers.ru/dangers.jpg">
+  <link rel="manifest" href="https://dandangers.ru/manifest.json">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="theme-color" content="#00d4aa">
   <meta name="msapplication-TileColor" content="#00d4aa">
   <meta name="format-detection" content="telephone=no">

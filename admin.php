@@ -12,7 +12,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Админ-панель | Tiles Survive Wiki</title>
   
-  <link rel="icon" type="image/jpeg" href="/dangers.jpg">
+  <link rel="icon" type="image/jpeg" href="https://dandangers.ru/dangers.jpg">
   <link rel="stylesheet" href="/modern-styles.css">
   
   <style>
