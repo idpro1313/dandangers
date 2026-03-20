@@ -57,13 +57,13 @@ docker compose --env-file .env up -d
    */15 * * * * SITE_ROOT=/opt/dandangers /opt/dandangers/scripts/update-site.sh >> /var/log/dandangers-update.log 2>&1
    ```
 
-4. Перезапуск контейнеров после pull нужен **редко** (только при смене `nginx.conf` или образов). Для принудительного restart:
+4. Скрипт **по умолчанию** после `git pull` выполняет **`docker compose restart web php`**, чтобы подхватить новый `nginx.conf` и код PHP (без перезапуска nginx внутри контейнера старый конфиг остаётся в памяти). Нужны файлы `docker/docker-compose.yml` и **`docker/.env`**.
 
-   ```cron
-   */15 * * * * SITE_ROOT=/opt/dandangers DOCKER_COMPOSE_RESTART=1 /opt/dandangers/scripts/update-site.sh >> /var/log/dandangers-update.log 2>&1
+   Чтобы **не** перезапускать контейнеры (только pull):
+
+   ```bash
+   SKIP_DOCKER_RESTART=1 ./scripts/update-site.sh
    ```
-
-Обычно PHP и статика подхватываются без restart.
 
 ## Миграция со старого стека (Caddy + updater)
 

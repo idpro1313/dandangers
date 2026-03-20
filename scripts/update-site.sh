@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #
-# Обновление кода с GitHub (только git pull). Для crontab на сервере.
-#
-# */15 * * * * SITE_ROOT=/opt/dandangers /opt/dandangers/scripts/update-site.sh >> /var/log/dandangers-update.log 2>&1
+# Обновление кода с GitHub (git pull) и применение изменений в Docker.
 #
 # SITE_ROOT — корень репозитория (по умолчанию каталог над scripts/)
 # GIT_REMOTE, GIT_BRANCH — по умолчанию origin, main
-# DOCKER_COMPOSE_RESTART=1 — после pull перезапустить web и php (редко нужно)
+#
+# После pull по умолчанию выполняется: docker compose restart web php
+# (новый nginx.conf подхватывается только после reload/restart контейнера web).
+# SKIP_DOCKER_RESTART=1 — не перезапускать контейнеры (только git pull).
 
 set -euo pipefail
 
@@ -27,9 +28,15 @@ git pull "$GIT_REMOTE" "$GIT_BRANCH"
 chmod -R 755 "$SITE_ROOT/content" 2>/dev/null || true
 chmod -R 755 "$SITE_ROOT/backups" 2>/dev/null || true
 
-if [ "${DOCKER_COMPOSE_RESTART:-0}" = "1" ] && [ -f "$SITE_ROOT/docker/docker-compose.yml" ] && [ -f "$SITE_ROOT/docker/.env" ]; then
-  log "docker compose restart web php"
-  (cd "$SITE_ROOT/docker" && docker compose --env-file .env restart web php) || log "docker compose restart не выполнен"
+if [ "${SKIP_DOCKER_RESTART:-0}" != "1" ] && [ -f "$SITE_ROOT/docker/docker-compose.yml" ] && [ -f "$SITE_ROOT/docker/.env" ]; then
+  log "docker compose restart web php (применение nginx.conf и PHP-кода)"
+  if (cd "$SITE_ROOT/docker" && docker compose --env-file .env restart web php); then
+    log "контейнеры перезапущены"
+  else
+    log "ВНИМАНИЕ: docker compose restart не выполнен (проверьте docker, путь к .env, имя проекта)"
+  fi
+elif [ -f "$SITE_ROOT/docker/docker-compose.yml" ] && [ ! -f "$SITE_ROOT/docker/.env" ]; then
+  log "ВНИМАНИЕ: есть docker/docker-compose.yml, но нет docker/.env — перезапуск контейнеров пропущен"
 fi
 
 log "Готово."
