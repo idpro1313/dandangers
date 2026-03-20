@@ -4,8 +4,20 @@
  * Обрабатывает ВСЕ страницы: главная, гайды, lootbar, расписание
  */
 
-// Получаем URI без query string (до тяжёлых include)
-$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+/** Путь запроса без query; защита от пустого REQUEST_URI (прокси/битые клиенты) */
+function dandangers_request_path() {
+    $raw = $_SERVER['REQUEST_URI'] ?? '/';
+    if ($raw === '' || $raw === false) {
+        $raw = '/';
+    }
+    $p = parse_url($raw, PHP_URL_PATH);
+    if ($p === null || $p === '' || $p === false) {
+        return '/';
+    }
+    return $p;
+}
+
+$uri = dandangers_request_path();
 
 // Корневые статические файлы: если nginx отдаёт всё в PHP без отдельных location — иначе 404
 $rootStatic = [
@@ -591,7 +603,7 @@ function renderNav($navActive = []) {
     $navActive = array_merge(['home' => false, 'about' => false, 'library' => false, 'old' => false, 'schedule' => false, 'lootbar' => false], $navActive);
     
     // Определяем текущую страницу из URL
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $uri = dandangers_request_path();
     $page = '';
     $type = '';
     

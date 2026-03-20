@@ -87,5 +87,17 @@ docker compose --env-file .env up -d
 | `docker/docker-compose.yml` | nginx + php, labels Traefik |
 | `docker/env.example` | шаблон `.env` |
 | `docker/nginx.conf` | nginx |
-| `scripts/update-site.sh` | обновление git + права (+ опционально restart) |
+| `scripts/update-site.sh` | `git pull` + права + перезапуск контейнеров |
+| `docker/update.sh` | полное обновление Docker: `pull`, `build --no-cache` (если есть build), `up --force-recreate` |
 | `docker/Caddyfile` | **устарел** (оставлен только как напоминание; Caddy не используется) |
+
+### Полная пересборка контейнеров без кэша (вручную)
+
+После правок в `docker-compose` или когда нужно заново скачать образы и пересоздать контейнеры:
+
+```bash
+cd /opt/webserver/sites/dandangers/docker
+./update.sh
+```
+
+Не делает `git pull` — только Docker. Код сайта на диске подхватывается из примонтированного `SITE_ROOT`.
