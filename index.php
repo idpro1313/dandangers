@@ -4,16 +4,32 @@
  * Обрабатывает ВСЕ страницы: главная, гайды, lootbar, расписание
  */
 
-// DEBUG отключен
+// Получаем URI без query string (до тяжёлых include)
+$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+
+// Корневые статические файлы: если nginx отдаёт всё в PHP без отдельных location — иначе 404
+$rootStatic = [
+    '/dangers.jpg'       => 'image/jpeg',
+    '/modern-styles.css' => 'text/css; charset=utf-8',
+    '/manifest.json'     => 'application/manifest+json; charset=utf-8',
+    '/robots.txt'        => 'text/plain; charset=utf-8',
+    '/sitemap.xml'       => 'application/xml; charset=utf-8',
+];
+if (isset($rootStatic[$uri])) {
+    $file = __DIR__ . $uri;
+    if (is_readable($file)) {
+        header('Content-Type: ' . $rootStatic[$uri]);
+        header('Cache-Control: public, max-age=86400');
+        readfile($file);
+        exit;
+    }
+}
 
 // Подключаем библиотеки и конфиги (в глобальной области!)
 require_once __DIR__ . '/lib/Parsedown.php';
 require_once __DIR__ . '/guides-config.php';
 require_once __DIR__ . '/lootbar-config.php';
 require_once __DIR__ . '/schedule-config.php';
-
-// Получаем URI без query string
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Роутинг на основе URL
 if ($uri === '/' || $uri === '') {
