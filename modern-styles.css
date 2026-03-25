@@ -1281,8 +1281,23 @@ main {
 }
 
 /* ============================================
-   Промо-баннер LootBar
+   Промо-баннеры (LootBar + партнёры)
    ============================================ */
+
+.promo-banners {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--content-max);
+  margin: var(--space-4) auto;
+  margin-left: var(--space-3);
+  margin-right: var(--space-3);
+}
+
+.promo-banners .promo-banner {
+  margin: 0;
+  max-width: none;
+}
 
 .promo-banner {
   display: flex;
@@ -1359,6 +1374,38 @@ main {
   white-space: nowrap;
 }
 
+/* Bead Wonder — marketbw.ru */
+.promo-banner--bead {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e8d5f2 100%);
+  border-color: #9c27b0;
+  box-shadow: 0 2px 12px rgba(156, 39, 176, 0.2);
+}
+
+.promo-banner--bead:hover {
+  box-shadow: 0 6px 20px rgba(156, 39, 176, 0.35);
+}
+
+.promo-banner--bead .promo-banner-title {
+  color: #6a1b9a;
+}
+
+.promo-banner--bead .promo-banner-desc {
+  color: #4a148c;
+}
+
+.promo-banner--bead .promo-banner-desc strong {
+  color: #7b1fa2;
+  font-weight: 700;
+}
+
+.promo-banner-icon--bead {
+  background: linear-gradient(135deg, #ab47bc 0%, #6a1b9a 100%);
+}
+
+.promo-banner-badge--bead {
+  background: linear-gradient(135deg, #ab47bc 0%, #6a1b9a 100%);
+}
+
 @media (max-width: 600px) {
   .promo-banner {
     flex-direction: column;
@@ -1378,20 +1425,25 @@ main {
 }
 
 @media (min-width: 768px) {
-  .promo-banner {
+  .promo-banners {
     margin-left: var(--space-6);
     margin-right: var(--space-6);
   }
 }
 
 @media (min-width: 1024px) {
-  .promo-banner {
+  .promo-banners {
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-/* Широкий баннер для страниц с wide content */
+/* Широкий блок баннеров для страниц с wide content */
+.promo-banners.wide {
+  max-width: var(--content-wide);
+}
+
+/* Одиночный баннер вне стека (если где-то используется) */
 .promo-banner.wide {
   max-width: var(--content-wide);
 }
@@ -1408,6 +1460,11 @@ main {
   
   body::before {
     display: none;
+  }
+
+  .promo-banners,
+  .promo-banner {
+    display: none !important;
   }
   
   .content-wrapper {

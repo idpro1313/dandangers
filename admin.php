@@ -25,6 +25,7 @@
     
     body.admin-body .site-nav,
     body.admin-body .site-footer,
+    body.admin-body .promo-banners,
     body.admin-body .promo-banner {
       display: none !important;
     }
@@ -686,7 +687,7 @@ function initEditor() {
       content: 'Начните редактирование...';
       color: var(--text-secondary);
     }
-    .site-nav, .site-footer, .promo-banner { display: none !important; }
+    .site-nav, .site-footer, .promo-banners, .promo-banner { display: none !important; }
     h1, h2, h3 { margin-top: 1em; margin-bottom: 0.5em; }
     p { margin-bottom: 1em; }
     a { color: var(--primary); }

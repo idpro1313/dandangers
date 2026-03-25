@@ -144,16 +144,28 @@ function renderHome() {
 
 <main>
 
-<a href="/lootbar-discounts.html" class="promo-banner">
-  <div class="promo-banner-content">
-    <div class="promo-banner-icon">💰</div>
-    <div class="promo-banner-text">
-      <div class="promo-banner-title">Скидки до 32% на игровую валюту!</div>
-      <div class="promo-banner-desc">Купоны 6% и 10% для новых пользователей LootBar</div>
+<div class="promo-banners">
+  <a href="/lootbar-discounts.html" class="promo-banner">
+    <div class="promo-banner-content">
+      <div class="promo-banner-icon">💰</div>
+      <div class="promo-banner-text">
+        <div class="promo-banner-title">Скидки до 32% на игровую валюту!</div>
+        <div class="promo-banner-desc">Купоны 6% и 10% для новых пользователей LootBar</div>
+      </div>
     </div>
-  </div>
-  <div class="promo-banner-badge">Подробнее</div>
-</a>
+    <div class="promo-banner-badge">Подробнее</div>
+  </a>
+  <a href="https://marketbw.ru/" class="promo-banner promo-banner--bead" target="_blank" rel="noopener noreferrer">
+    <div class="promo-banner-content">
+      <div class="promo-banner-icon promo-banner-icon--bead">✨</div>
+      <div class="promo-banner-text">
+        <div class="promo-banner-title">Bead Wonder — украшения из бисера</div>
+        <div class="promo-banner-desc">Скидка для посетителей сайта! Сделайте заказ с промокодом <strong>dandanger</strong></div>
+      </div>
+    </div>
+    <div class="promo-banner-badge promo-banner-badge--bead">На сайт</div>
+  </a>
+</div>
 
 <div class="content-wrapper">
 
@@ -881,18 +893,30 @@ function renderPage($data) {
 
 <main>
 
+<div class="promo-banners<?= $type === 'schedule' ? ' wide' : '' ?>">
 <?php if ($type !== 'lootbar'): ?>
-<a href="/lootbar-discounts.html" class="promo-banner<?= $type === 'schedule' ? ' wide' : '' ?>">
-  <div class="promo-banner-content">
-    <div class="promo-banner-icon">💰</div>
-    <div class="promo-banner-text">
-      <div class="promo-banner-title">Скидки до 32% на игровую валюту!</div>
-      <div class="promo-banner-desc">Купоны 6% и 10% для новых пользователей LootBar</div>
+  <a href="/lootbar-discounts.html" class="promo-banner">
+    <div class="promo-banner-content">
+      <div class="promo-banner-icon">💰</div>
+      <div class="promo-banner-text">
+        <div class="promo-banner-title">Скидки до 32% на игровую валюту!</div>
+        <div class="promo-banner-desc">Купоны 6% и 10% для новых пользователей LootBar</div>
+      </div>
     </div>
-  </div>
-  <div class="promo-banner-badge">Подробнее</div>
-</a>
+    <div class="promo-banner-badge">Подробнее</div>
+  </a>
 <?php endif; ?>
+  <a href="https://marketbw.ru/" class="promo-banner promo-banner--bead" target="_blank" rel="noopener noreferrer">
+    <div class="promo-banner-content">
+      <div class="promo-banner-icon promo-banner-icon--bead">✨</div>
+      <div class="promo-banner-text">
+        <div class="promo-banner-title">Bead Wonder — украшения из бисера</div>
+        <div class="promo-banner-desc">Скидка для посетителей сайта! Сделайте заказ с промокодом <strong>dandanger</strong></div>
+      </div>
+    </div>
+    <div class="promo-banner-badge promo-banner-badge--bead">На сайт</div>
+  </a>
+</div>
 
 <article class="content-wrapper<?= $type === 'schedule' ? ' wide' : '' ?>">
 
